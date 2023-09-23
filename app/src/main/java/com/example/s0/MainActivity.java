@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
         Button exitBtn =  findViewById(R.id.exitButton);
 
         startBtn.setOnClickListener(v -> {
-            Intent game = new Intent(MainActivity.this, BlankScreen.class); // Ashan's Change
-            startActivity(game); // Ashan's Change
+            Intent game = new Intent(MainActivity.this, ConfigScreen.class);
+            startActivity(game);
         });
 
         exitBtn.setOnClickListener(v -> {
