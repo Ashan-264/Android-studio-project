@@ -10,7 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.S0">
         <activity
-            android:name="com.example.s0.MainActivity"
+            android:name=".ConfigScreen"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.OPENABLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,9 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.example.s0.BlankScreen"
+            android:name=".BlankScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
