@@ -10,6 +10,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.S0">
         <activity
+            android:name=".EndScreen"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.OPENABLE" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".GameScreen"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.OPENABLE" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".ConfigScreen"
             android:exported="false">
             <intent-filter>

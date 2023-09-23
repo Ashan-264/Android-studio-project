@@ -8,22 +8,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-public class ConfigScreen extends AppCompatActivity {
+public class GameScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_config_screen);
-        Button gameButton =  findViewById(R.id.gameBtn);
+        setContentView(R.layout.activity_game_screen);
+        Button gameButton =  findViewById(R.id.finishBtn);
 
         gameButton.setOnClickListener(v -> {
-            Intent game = new Intent(this, GameScreen.class);
+            Intent game = new Intent(this, EndScreen.class);
             startActivity(game);
         });
     }
-
-
-//        Intent game = new Intent(MainActivity.this, ConfigScreen.class);
-//        startActivity(game);
-};
+}
