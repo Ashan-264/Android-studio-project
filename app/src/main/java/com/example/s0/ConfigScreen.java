@@ -16,7 +16,7 @@ public class ConfigScreen extends AppCompatActivity {
     private String difficulty;
     private int health;
 
-    EditText nameInput;
+    private EditText nameInput;
 
 
     @Override
