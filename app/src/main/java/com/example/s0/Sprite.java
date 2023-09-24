@@ -7,11 +7,11 @@ public class Sprite {
 
     private String image;
     public Sprite(String name) {
-        if (name.equals("yellowBuzz")) {
-            image = "yellow_buzz.png";
-        } else if (name.equals("purpleWizard")) {
+        if (name.equals("Buzz")) {
+            image = "buzz.png";
+        } else if (name.equals("Wizard")) {
             image = "app/src/main/res/drawable/purple_wizard.png";
-        } else {
+        } else if (name.equals("Archer")) {
             image = "app/src/main/res/drawable/green_archer.png.png";
         }
     }

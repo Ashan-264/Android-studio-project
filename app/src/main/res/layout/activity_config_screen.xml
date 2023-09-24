@@ -1,9 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:orientation="horizontal"
     android:visibility="visible">
+
+    <RadioGroup
+        android:id="@+id/difficultyInput"
+        android:layout_width="match_parent"
+        android:layout_height="106dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="456dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/radio_selector"
+            android:button="@android:color/transparent"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:layout_margin="16dp"
+            android:padding="16dp"
+            android:text="Easy"
+            android:textColor="@drawable/radio_text_color" />
+
+        <RadioButton
+            android:id="@+id/radioButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/radio_selector"
+            android:button="@android:color/transparent"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:layout_margin="16dp"
+            android:padding="16dp"
+            android:text="Medium"
+            android:textColor="@drawable/radio_text_color" />
+
+        <RadioButton
+            android:id="@+id/radioButton6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/radio_selector"
+            android:button="@android:color/transparent"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:layout_margin="16dp"
+            android:padding="16dp"
+            android:text="Hard"
+            android:textColor="@drawable/radio_text_color" />
+
+    </RadioGroup>
 
     <Button
         android:id="@+id/gameBtn"
@@ -25,8 +81,19 @@
         android:text="Player Name"
         android:textSize="34sp" />
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="239dp"
+        android:text="Character"
+        android:textSize="34sp" />
+
     <EditText
         android:id="@+id/nameInput"
+        style="Name"
         android:layout_width="192dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -35,8 +102,72 @@
         android:layout_marginTop="119dp"
         android:layout_marginEnd="108dp"
         android:ems="10"
-        android:inputType="text"
-        android:text="Name" />
+        android:hint="Name"
+        android:inputType="text" />
+
+    <RadioGroup
+        android:id="@+id/difficultyInput"
+        android:layout_width="match_parent"
+        android:layout_height="106dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="306dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:background="@drawable/radio_selector"
+            android:textColor="@drawable/radio_text_color"
+            android:elevation="4dp"
+            android:layout_margin="16dp"
+            android:padding="16dp"
+            android:gravity="center"
+            android:text="Buzz" />
+
+        <RadioButton
+            android:id="@+id/radioButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:background="@drawable/radio_selector"
+            android:textColor="@drawable/radio_text_color"
+            android:elevation="4dp"
+            android:layout_margin="16dp"
+            android:padding="16dp"
+            android:gravity="center"
+            android:text="Wizard" />
+
+        <RadioButton
+            android:id="@+id/radioButton6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@android:color/transparent"
+            android:background="@drawable/radio_selector"
+            android:textColor="@drawable/radio_text_color"
+            android:elevation="4dp"
+            android:layout_margin="16dp"
+            android:padding="16dp"
+            android:gravity="center"
+            android:text="Archer" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="406dp"
+        android:text="Difficulty"
+        android:textSize="34sp" />
 
 
 </RelativeLayout>
