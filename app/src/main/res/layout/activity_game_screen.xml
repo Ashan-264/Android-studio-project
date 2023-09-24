@@ -17,4 +17,43 @@
         android:layout_marginBottom="64dp"
         android:text="Done Playing" />
 
+    <TextView
+        android:id="@+id/gamePlayerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="308dp"
+        android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/playerImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="251dp"/>
+
+    <TextView
+        android:id="@+id/difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="27dp"
+        android:text="TextView"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/playerHealth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="28dp"
+        android:text="TextView"
+        android:textSize="24sp" />
+
 </RelativeLayout>
