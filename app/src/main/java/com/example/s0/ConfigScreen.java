@@ -4,12 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 public class ConfigScreen extends AppCompatActivity {
 
@@ -30,7 +28,7 @@ public class ConfigScreen extends AppCompatActivity {
         nameInput = (EditText) findViewById(R.id.nameInput);
 
         // sprite
-        RadioGroup spriteRadio = findViewById(R.id.difficultyInput);
+        RadioGroup spriteRadio = findViewById(R.id.characterInput);
 
 
         // difficulty + health
@@ -64,16 +62,16 @@ public class ConfigScreen extends AppCompatActivity {
                 health = 30;
             }
             if (validName && health != 0 && spriteRadioID != -1) {
-                //CHANGE THIS WE NEED TO SAVE THIS PLAYER IN SOMETHING THAT WILL KEEP TRACK OF IT
+
                 Player player = new Player(name, sprite, health);
+
+                GameObject gameObject = GameObject.getGameObject();
+
+                gameObject.configGame(player, difficulty);
 
                 Intent game = new Intent(this, GameScreen.class);
                 startActivity(game);
             }
         });
     }
-
-
-//        Intent game = new Intent(MainActivity.this, ConfigScreen.class);
-//        startActivity(game);
 };

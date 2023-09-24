@@ -12,4 +12,16 @@ public class Player {
         this.health = health;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public Sprite getSprite() {
+        return sprite;
+    }
+
 }
