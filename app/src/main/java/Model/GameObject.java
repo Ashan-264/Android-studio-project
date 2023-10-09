@@ -1,4 +1,4 @@
-package com.example.s0;
+package Model;
 
 public class GameObject {
 

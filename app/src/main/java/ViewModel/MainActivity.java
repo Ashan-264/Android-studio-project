@@ -1,4 +1,4 @@
-package com.example.s0;
+package ViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
