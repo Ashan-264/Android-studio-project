@@ -2,7 +2,7 @@ package Model;
 
 
 
-public class Player {
+public class Player implements Comparable<Player> {
 
     private String name;
     private Sprite sprite;
@@ -33,6 +33,16 @@ public class Player {
 
     public int getScore() { return score;}
 
-    public void subScore(int amount) { score -= amount;}
+    public void subScore(int amount) {
+        score -= amount;
 
+        if (score < 0) {
+            score = 0;
+        }
+    }
+
+    @Override
+    public int compareTo(Player compPlayer){
+        return compPlayer.score - this.score;
+    }
 }

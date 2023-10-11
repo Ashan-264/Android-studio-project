@@ -18,6 +18,7 @@ import Model.Player;
 public class GameScreen extends AppCompatActivity {
 
     private Handler handler = new Handler();
+    private Runnable countdownRunnable;
 
     private TextView playerScoreText;
 
@@ -63,13 +64,14 @@ public class GameScreen extends AppCompatActivity {
         Button gameButton =  findViewById(R.id.finishBtn);
 
         gameButton.setOnClickListener(v -> {
+            handler.removeCallbacks(countdownRunnable);
             Intent game = new Intent(this, EndScreen.class);
             startActivity(game);
         });
     }
 
     private void keepScore(Player player) {
-        handler.postDelayed(new Runnable() {
+        handler.postDelayed(countdownRunnable = new Runnable() {
             @Override
             public void run() {
                 // Decrement the count by 1
