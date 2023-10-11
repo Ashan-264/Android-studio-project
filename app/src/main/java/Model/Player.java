@@ -10,7 +10,7 @@ public class Player implements Comparable<Player> {
 
     private int score;
 
-    static int MAX_SCORE = 10;
+    static int MAX_SCORE = 999;
 
     public Player(String name, String spriteName, int health) {
         this.name = name;

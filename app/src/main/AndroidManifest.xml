@@ -30,6 +30,26 @@
         </activity>
 
         <activity
+            android:name="ViewModel.GameScreen2"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.OPENABLE" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="ViewModel.GameScreen3"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.OPENABLE" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name="ViewModel.ConfigScreen"
             android:exported="false">
             <intent-filter>
