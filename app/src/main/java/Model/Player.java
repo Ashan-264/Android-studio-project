@@ -13,7 +13,7 @@ public class Player implements Comparable<Player> {
 
     private Date date;
 
-    static int MAX_SCORE = 10;
+    static int MAX_SCORE = 999;
 
     private Player() {
         this.name = null;
