@@ -31,7 +31,7 @@ public class EndScreen extends AppCompatActivity {
         PriorityQueue<Player> sortedLeaderboard =
                 new PriorityQueue<Player>(gameObject.getLeaderboard());
 
-        SimpleDateFormat format = new SimpleDateFormat("hh:mm MM.dd.yy");
+        SimpleDateFormat format = new SimpleDateFormat("hh:mm MM/dd/yy");
 
         Player lbPlayer = sortedLeaderboard.poll();
         TextView leaderText;
