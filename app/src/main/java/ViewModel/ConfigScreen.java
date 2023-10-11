@@ -66,7 +66,9 @@ public class ConfigScreen extends AppCompatActivity {
             }
             if (validName && health != 0 && spriteRadioID != -1) {
 
-                Player player = new Player(name, sprite, health);
+                Player player = Player.getPlayer();
+
+                player.setPlayer(name, sprite, health);
 
                 GameObject gameObject = GameObject.getGameObject();
 
