@@ -4,14 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import Model.GameObject;
 import Model.Player;
 
 public class GameScreen extends AppCompatActivity {
+
+    private Handler handler = new Handler();
+
+    private TextView playerScoreText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +53,40 @@ public class GameScreen extends AppCompatActivity {
             playerImage.setImageResource(R.drawable.green_archer);
         }
 
+        // Display score
+        playerScoreText = (TextView) findViewById(R.id.playerScore);
+        playerScoreText.setText("Score: " + Integer.toString(player.getScore()));
+        // Update score every 2 seconds
+        keepScore(player);
+
+
         Button gameButton =  findViewById(R.id.finishBtn);
 
         gameButton.setOnClickListener(v -> {
             Intent game = new Intent(this, EndScreen.class);
             startActivity(game);
         });
+    }
+
+    private void keepScore(Player player) {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Decrement the count by 1
+                player.subScore(1);
+
+                // Update the TextView
+                playerScoreText.setText("Score: " + Integer.toString(player.getScore()));
+
+                if (player.getScore() > 0) {
+                    // Schedule the next decrement after 1 second
+                    handler.postDelayed(this, 1000);
+                } else {
+                    // Count reached 0, you can take further action here
+                    Intent game = new Intent(GameScreen.this, EndScreen.class);
+                    startActivity(game);
+                }
+            }
+        }, 1000); // Start the countdown after 1 second
     }
 }
