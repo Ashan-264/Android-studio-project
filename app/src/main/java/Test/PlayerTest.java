@@ -15,9 +15,16 @@ public class PlayerTest {
     }
 
     @Test
-    public void testPlayerstats () {
+    public void testName () {
         assertEquals("George Burdell", player.getName());
+    }
+    @Test
+    public void testSprite () {
         assertEquals("Burdell", player.getSprite());
+
+    }
+    @Test
+    public void testHealth () {
         assertEquals("3", player.getHealth());
     }
 }
