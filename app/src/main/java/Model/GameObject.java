@@ -14,12 +14,6 @@ public class GameObject {
 
     private ArrayList<Player> leaderboard;
 
-
-    private GameObject(Player player, String difficulty) {
-        this.player = player;
-        this.difficulty = difficulty;
-    }
-
     private GameObject() {
         player = null;
         difficulty = null;
@@ -49,7 +43,7 @@ public class GameObject {
     public ArrayList<Player> getLeaderboard() {return leaderboard;}
 
     public void setLeaderboard() {
-        leaderboard.add(player);
+        leaderboard.add(player.copy());
     }
 
 }

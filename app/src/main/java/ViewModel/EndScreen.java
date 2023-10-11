@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.PriorityQueue;
 
@@ -22,7 +23,7 @@ public class EndScreen extends AppCompatActivity {
         setContentView(R.layout.activity_end_screen);
 
         GameObject gameObject = GameObject.getGameObject();
-        Player player = gameObject.getPlayer();
+        Player player = Player.getPlayer();
 
         gameObject.setLeaderboard();
 
@@ -30,40 +31,42 @@ public class EndScreen extends AppCompatActivity {
         PriorityQueue<Player> sortedLeaderboard =
                 new PriorityQueue<Player>(gameObject.getLeaderboard());
 
+        SimpleDateFormat format = new SimpleDateFormat("hh:mm MM.dd.yy");
+
         Player lbPlayer = sortedLeaderboard.poll();
         TextView leaderText;
         if (lbPlayer != null) {
             leaderText = (TextView) findViewById(R.id.leaderBoard1);
-            leaderText.setText("1: " +  lbPlayer.getName() + " - "
-                    + Integer.toString(lbPlayer.getScore()) + " points");
+            leaderText.setText(Integer.toString(lbPlayer.getScore()) + " - " +  lbPlayer.getName()
+                    + " (" + format.format(lbPlayer.getDate()) + ")");
         }
 
         lbPlayer = sortedLeaderboard.poll();
         if (lbPlayer != null) {
             leaderText= (TextView) findViewById(R.id.leaderBoard2);
-            leaderText.setText("2: " +  lbPlayer.getName() + " - "
-                    + Integer.toString(lbPlayer.getScore()) + " points");
+            leaderText.setText(Integer.toString(lbPlayer.getScore()) + " - " +  lbPlayer.getName()
+                    + " (" + format.format(lbPlayer.getDate()) + ")");
         }
 
         lbPlayer = sortedLeaderboard.poll();
         if (lbPlayer != null) {
             leaderText= (TextView) findViewById(R.id.leaderBoard3);
-            leaderText.setText("3: " +  lbPlayer.getName() + " - "
-                    + Integer.toString(lbPlayer.getScore()) + " points");
+            leaderText.setText(Integer.toString(lbPlayer.getScore()) + " - " +  lbPlayer.getName()
+                    + " (" + format.format(lbPlayer.getDate()) + ")");
         }
 
         lbPlayer = sortedLeaderboard.poll();
         if (lbPlayer != null) {
             leaderText= (TextView) findViewById(R.id.leaderBoard4);
-            leaderText.setText("4: " +  lbPlayer.getName() + " - "
-                    + Integer.toString(lbPlayer.getScore()) + " points");
+            leaderText.setText(Integer.toString(lbPlayer.getScore()) + " - " +  lbPlayer.getName()
+                    + " (" + format.format(lbPlayer.getDate()) + ")");
         }
 
         lbPlayer = sortedLeaderboard.poll();
         if (lbPlayer != null) {
             leaderText= (TextView) findViewById(R.id.leaderBoard5);
-            leaderText.setText("5: " +  lbPlayer.getName() + " - "
-                    + Integer.toString(lbPlayer.getScore()) + " points");
+            leaderText.setText(Integer.toString(lbPlayer.getScore()) + " - " +  lbPlayer.getName()
+                    + " (" + format.format(lbPlayer.getDate()) + ")");
         }
 
 

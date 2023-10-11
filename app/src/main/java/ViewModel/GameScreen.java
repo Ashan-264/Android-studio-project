@@ -28,7 +28,7 @@ public class GameScreen extends AppCompatActivity {
         setContentView(R.layout.activity_game_screen);
 
         GameObject gameObject = GameObject.getGameObject();
-        Player player = gameObject.getPlayer();
+        Player player = Player.getPlayer();
 
         // Display difficulty
         TextView difficultyText = (TextView) findViewById(R.id.difficulty);
