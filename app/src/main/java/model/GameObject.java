@@ -1,8 +1,5 @@
-package Model;
+package model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.PriorityQueue;
 
 public class GameObject {
 
@@ -12,12 +9,12 @@ public class GameObject {
 
     private static GameObject gameObject;
 
-    private ArrayList<Player> leaderboard;
+    private LeaderBoard leaderboard;
 
     private GameObject() {
         player = null;
         difficulty = null;
-        leaderboard = new ArrayList<>();
+        leaderboard = LeaderBoard.getLeaderBoard();
     }
 
     public static GameObject getGameObject() {
@@ -40,10 +37,12 @@ public class GameObject {
         return difficulty;
     }
 
-    public ArrayList<Player> getLeaderboard() {return leaderboard;}
+    public LeaderBoard getLeaderboard() {
+        return leaderboard;
+    }
 
     public void setLeaderboard() {
-        leaderboard.add(player.copy());
+        leaderboard.addPlayer(player.copy());
     }
 
 }

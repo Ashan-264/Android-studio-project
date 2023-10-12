@@ -1,4 +1,4 @@
-package ViewModel;
+package viewmodel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,13 +9,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Timer;
-import java.util.TimerTask;
 
-import Model.GameObject;
-import Model.Player;
+import model.GameObject;
+import model.Player;
 
-public class GameScreen3 extends AppCompatActivity {
+public class GameScreen2 extends AppCompatActivity {
 
     private Handler handler = new Handler();
     private Runnable countdownRunnable;
@@ -25,7 +23,7 @@ public class GameScreen3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_screen3);
+        setContentView(R.layout.activity_game_screen2);
 
         GameObject gameObject = GameObject.getGameObject();
         Player player = gameObject.getPlayer();
@@ -65,7 +63,7 @@ public class GameScreen3 extends AppCompatActivity {
 
         gameButton.setOnClickListener(v -> {
             handler.removeCallbacks(countdownRunnable);
-            Intent game = new Intent(this, EndScreen.class);
+            Intent game = new Intent(this, GameScreen3.class);
             startActivity(game);
         });
     }
@@ -85,7 +83,7 @@ public class GameScreen3 extends AppCompatActivity {
                     handler.postDelayed(this, 1000);
                 } else {
                     // Count reached 0, you can take further action here
-                    Intent game = new Intent(GameScreen3.this, EndScreen.class);
+                    Intent game = new Intent(GameScreen2.this, EndScreen.class);
                     startActivity(game);
                 }
             }

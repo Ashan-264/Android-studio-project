@@ -1,18 +1,14 @@
-package Test;
+package test;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
+import org.junit.Before;
+import org.junit.Test;
 
-import android.widget.TextView;
-
-import org.junit.*;
-
-import java.util.ArrayList;
 import java.util.PriorityQueue;
 
-import Model.GameObject;
-import Model.Player;
-import ViewModel.R;
+import model.GameObject;
+import model.LeaderBoard;
+import model.Player;
 
 public class LeaderBoardTest {
     private Player player1;
@@ -37,15 +33,15 @@ public class LeaderBoardTest {
         player5 = new Player("Rager", "Rager", 26);
         player5.subScore(3);
 
-        testGame.configGame(player1,"easy");
+        testGame.configGame(player1, "easy");
         testGame.setLeaderboard();
-        testGame.configGame(player2,"easy");
+        testGame.configGame(player2, "easy");
         testGame.setLeaderboard();
-        testGame.configGame(player3,"easy");
+        testGame.configGame(player3, "easy");
         testGame.setLeaderboard();
-        testGame.configGame(player4,"easy");
+        testGame.configGame(player4, "easy");
         testGame.setLeaderboard();
-        testGame.configGame(player5,"easy");
+        testGame.configGame(player5, "easy");
         testGame.setLeaderboard();
 
 
@@ -53,56 +49,58 @@ public class LeaderBoardTest {
 
 
     @Test
-    public void StorePlayerTest() {
+    public void storePlayerTest() {
         GameObject gameObject = GameObject.getGameObject();
         Player player = gameObject.getPlayer();
         gameObject.setLeaderboard();
 
         // Make Leaderboard
-        PriorityQueue<Player> sortedLeaderboard = new PriorityQueue<Player>(gameObject.getLeaderboard());
+        PriorityQueue<Player> sortedLeaderboard =
+                new PriorityQueue<Player>(LeaderBoard.getLeaderBoard().getPlayerList());
 
         Player lbPlayer = sortedLeaderboard.poll();
         sortedLeaderboard.poll();
         if (lbPlayer != null) {
-            assertEquals("1: Rager - 7 points",("1: " +  lbPlayer.getName() + " - "
+            assertEquals("1: Rager - 7 points", ("1: " +  lbPlayer.getName() + " - "
                     + Integer.toString(lbPlayer.getScore()) + " points"));
         }
 
     }
     @Test
-    public void CorrectOrder() {
+    public void correctOrder() {
         GameObject gameObject = GameObject.getGameObject();
         Player player = gameObject.getPlayer();
         gameObject.setLeaderboard();
 
         // Make Leaderboard
-        PriorityQueue<Player> sortedLeaderboard = new PriorityQueue<Player>(gameObject.getLeaderboard());
+        PriorityQueue<Player> sortedLeaderboard =
+                new PriorityQueue<Player>(LeaderBoard.getLeaderBoard().getPlayerList());
 
         Player lbPlayer = sortedLeaderboard.poll();
         sortedLeaderboard.poll();
         if (lbPlayer != null) {
-            assertEquals("1: Rager - 7 points",("1: " +  lbPlayer.getName() + " - "
+            assertEquals("1: Rager - 7 points", ("1: " +  lbPlayer.getName() + " - "
                     + Integer.toString(lbPlayer.getScore()) + " points"));
         }
         Player lbPlayer1 = sortedLeaderboard.poll();
         if (lbPlayer1 != null) {
-            assertEquals("1: Archer - 6 points",("1: " +  lbPlayer1.getName() + " - "
+            assertEquals("1: Archer - 6 points", ("1: " +  lbPlayer1.getName() + " - "
                     + Integer.toString(lbPlayer1.getScore()) + " points"));
         }
         Player lbPlayer2 = sortedLeaderboard.poll();
 
         if (lbPlayer2 != null) {
-            assertEquals("1: George Burdell - 5 points",("1: " +  lbPlayer2.getName() + " - "
+            assertEquals("1: George Burdell - 5 points", ("1: " +  lbPlayer2.getName() + " - "
                     + Integer.toString(lbPlayer2.getScore()) + " points"));
         }
         Player lbPlayer3 = sortedLeaderboard.poll();
         if (lbPlayer != null) {
-            assertEquals("1: Ash - 4 points",("1: " +  lbPlayer3.getName() + " - "
+            assertEquals("1: Ash - 4 points", ("1: " +  lbPlayer3.getName() + " - "
                     + Integer.toString(lbPlayer3.getScore()) + " points"));
         }
         Player lbPlayer4 = sortedLeaderboard.poll();
         if (lbPlayer != null) {
-            assertEquals("1: Grover - 3 points",("1: " +  lbPlayer4.getName() + " - "
+            assertEquals("1: Grover - 3 points", ("1: " +  lbPlayer4.getName() + " - "
                     + Integer.toString(lbPlayer4.getScore()) + " points"));
         }
 

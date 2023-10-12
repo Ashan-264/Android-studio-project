@@ -1,12 +1,12 @@
-package Test;
+package test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import org.junit.*;
 
-import Model.GameObject;
-import Model.Player;
+import model.GameObject;
+import model.Player;
 
 public class GameObjectTest {
     @Test
@@ -18,11 +18,11 @@ public class GameObjectTest {
     }
     @Test
     public void testPlayer() {
-        Player newPlayer = new Player("Test name","Test Sprite",1);
+        Player newPlayer = new Player("Test name", "Test Sprite", 1);
         String testDifficulty = "Hard";
 
         GameObject gameObject = GameObject.getGameObject();
-        gameObject.configGame(newPlayer,testDifficulty);
+        gameObject.configGame(newPlayer, testDifficulty);
 
         assertEquals(newPlayer,  gameObject.getPlayer());
 
@@ -31,11 +31,11 @@ public class GameObjectTest {
 
     @Test
     public void testDifficulty() {
-        Player newPlayer = new Player("Test name","Test Sprite",1);
+        Player newPlayer = new Player("Test name", "Test Sprite", 1);
         String testDifficulty = "Hard";
 
         GameObject gameObject = GameObject.getGameObject();
-        gameObject.configGame(newPlayer,testDifficulty);
+        gameObject.configGame(newPlayer, testDifficulty);
 
         assertEquals(testDifficulty, gameObject.getDifficulty());
     }

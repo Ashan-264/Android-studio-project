@@ -1,4 +1,4 @@
-package ViewModel;
+package viewmodel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,11 +8,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
-import java.util.Collections;
 import java.util.PriorityQueue;
 
-import Model.GameObject;
-import Model.Player;
+import model.GameObject;
+import model.LeaderBoard;
+import model.Player;
 
 
 public class EndScreen extends AppCompatActivity {
@@ -25,11 +25,12 @@ public class EndScreen extends AppCompatActivity {
         GameObject gameObject = GameObject.getGameObject();
         Player player = Player.getPlayer();
 
-        gameObject.setLeaderboard();
+        LeaderBoard leaderBoard = LeaderBoard.getLeaderBoard();
+        leaderBoard.addPlayer(player.copy());
 
         // Make Leaderboard
         PriorityQueue<Player> sortedLeaderboard =
-                new PriorityQueue<Player>(gameObject.getLeaderboard());
+                new PriorityQueue<Player>(leaderBoard.getPlayerList());
 
         SimpleDateFormat format = new SimpleDateFormat("hh:mm MM/dd/yy");
 
@@ -43,28 +44,28 @@ public class EndScreen extends AppCompatActivity {
 
         lbPlayer = sortedLeaderboard.poll();
         if (lbPlayer != null) {
-            leaderText= (TextView) findViewById(R.id.leaderBoard2);
+            leaderText = (TextView) findViewById(R.id.leaderBoard2);
             leaderText.setText(Integer.toString(lbPlayer.getScore()) + " - " +  lbPlayer.getName()
                     + " (" + format.format(lbPlayer.getDate()) + ")");
         }
 
         lbPlayer = sortedLeaderboard.poll();
         if (lbPlayer != null) {
-            leaderText= (TextView) findViewById(R.id.leaderBoard3);
+            leaderText = (TextView) findViewById(R.id.leaderBoard3);
             leaderText.setText(Integer.toString(lbPlayer.getScore()) + " - " +  lbPlayer.getName()
                     + " (" + format.format(lbPlayer.getDate()) + ")");
         }
 
         lbPlayer = sortedLeaderboard.poll();
         if (lbPlayer != null) {
-            leaderText= (TextView) findViewById(R.id.leaderBoard4);
+            leaderText = (TextView) findViewById(R.id.leaderBoard4);
             leaderText.setText(Integer.toString(lbPlayer.getScore()) + " - " +  lbPlayer.getName()
                     + " (" + format.format(lbPlayer.getDate()) + ")");
         }
 
         lbPlayer = sortedLeaderboard.poll();
         if (lbPlayer != null) {
-            leaderText= (TextView) findViewById(R.id.leaderBoard5);
+            leaderText = (TextView) findViewById(R.id.leaderBoard5);
             leaderText.setText(Integer.toString(lbPlayer.getScore()) + " - " +  lbPlayer.getName()
                     + " (" + format.format(lbPlayer.getDate()) + ")");
         }
@@ -72,7 +73,7 @@ public class EndScreen extends AppCompatActivity {
 
 
         // Display score
-        TextView scoreText= (TextView) findViewById(R.id.scoreText);
+        TextView scoreText = (TextView) findViewById(R.id.scoreText);
         scoreText.setText("Score: " + Integer.toString(player.getScore()));
 
         Button restartBtn =  findViewById(R.id.restartButton);

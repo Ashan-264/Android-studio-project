@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import java.util.Date;
 
@@ -13,13 +13,21 @@ public class Player implements Comparable<Player> {
 
     private Date date;
 
-    static int MAX_SCORE = 999;
+    private static int maxScore = 999;
 
     private Player() {
         this.name = null;
         this.sprite = null;
         this.health = 0;
-        this.score = MAX_SCORE;
+        this.score = maxScore;
+        this.date = new Date();
+    }
+
+    public Player(String name, String spriteName, int health) {
+        this.name = name;
+        this.sprite = new Sprite(spriteName);
+        this.health = health;
+        this.score = maxScore;
         this.date = new Date();
     }
 
@@ -35,7 +43,7 @@ public class Player implements Comparable<Player> {
         this.name = name;
         this.sprite = new Sprite(spriteName);
         this.health = health;
-        this.score = MAX_SCORE;
+        this.score = maxScore;
         this.date = new Date();
     }
 
@@ -63,9 +71,17 @@ public class Player implements Comparable<Player> {
         return sprite;
     }
 
-    public int getScore() { return score;}
+    public int getMaxScore() {
+        return maxScore;
+    }
 
-    public Date getDate() {return date;}
+    public int getScore() {
+        return score;
+    }
+
+    public Date getDate() {
+        return date;
+    }
 
     public void subScore(int amount) {
         score -= amount;
@@ -76,7 +92,7 @@ public class Player implements Comparable<Player> {
     }
 
     @Override
-    public int compareTo(Player compPlayer){
+    public int compareTo(Player compPlayer) {
         return compPlayer.score - this.score;
     }
 }
