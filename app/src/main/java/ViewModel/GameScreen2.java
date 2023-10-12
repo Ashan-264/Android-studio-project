@@ -1,4 +1,4 @@
-package viewmodel;
+package ViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,23 +9,26 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import model.GameObject;
-import model.Player;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class GameScreen extends AppCompatActivity {
+import Model.GameObject;
+import Model.Player;
 
-    private static Handler handler = new Handler();
+public class GameScreen2 extends AppCompatActivity {
+
+    private Handler handler = new Handler();
     private Runnable countdownRunnable;
 
-    private static TextView playerScoreText;
+    private TextView playerScoreText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_screen);
+        setContentView(R.layout.activity_game_screen2);
 
         GameObject gameObject = GameObject.getGameObject();
-        Player player = Player.getPlayer();
+        Player player = gameObject.getPlayer();
 
         // Display difficulty
         TextView difficultyText = (TextView) findViewById(R.id.difficulty);
@@ -62,7 +65,7 @@ public class GameScreen extends AppCompatActivity {
 
         gameButton.setOnClickListener(v -> {
             handler.removeCallbacks(countdownRunnable);
-            Intent game = new Intent(this, GameScreen2.class);
+            Intent game = new Intent(this, GameScreen3.class);
             startActivity(game);
         });
     }
@@ -82,7 +85,7 @@ public class GameScreen extends AppCompatActivity {
                     handler.postDelayed(this, 1000);
                 } else {
                     // Count reached 0, you can take further action here
-                    Intent game = new Intent(GameScreen.this, EndScreen.class);
+                    Intent game = new Intent(GameScreen2.this, EndScreen.class);
                     startActivity(game);
                 }
             }

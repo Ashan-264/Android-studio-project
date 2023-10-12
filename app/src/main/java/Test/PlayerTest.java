@@ -1,10 +1,11 @@
-package test;
+package Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import model.Player;
+import Model.Player;
 
 public class PlayerTest {
     private Player player;
@@ -14,31 +15,31 @@ public class PlayerTest {
     }
 
     @Test
-    public void testName() {
+    public void testName () {
         assertEquals("George Burdell", player.getName());
     }
     @Test
-    public void testSprite() {
+    public void testSprite () {
         assertEquals("Burdell", player.getSprite().getImageName());
 
     }
     @Test
-    public void testHealth() {
+    public void testHealth () {
         assertEquals(3, player.getHealth());
     }
 
     @Test
-    public void testDefaultScore() {
+    public void testDefaultScore () {
         assertEquals(10, player.getScore());
     }
 
     @Test
-    public void testSubScore() {
+    public void testSubScore () {
         player.subScore(4);
         assertEquals(6, player.getScore());
     }
     @Test
-    public void testNegativeScore() {
+    public void testNegativeScore () {
         player.subScore(12);
         assertEquals(0, player.getScore());
     }

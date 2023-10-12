@@ -1,4 +1,4 @@
-package viewmodel;
+package ViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,8 +9,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import model.GameObject;
-import model.Player;
+import Model.GameObject;
+import Model.Player;
 
 public class ConfigScreen extends AppCompatActivity {
 
