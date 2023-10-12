@@ -20,12 +20,32 @@ public class PlayerTest {
     }
     @Test
     public void testSprite () {
-        assertEquals("Burdell", player.getSprite());
+        assertEquals("Burdell", player.getSprite().getImageName());
 
     }
     @Test
     public void testHealth () {
-        assertEquals("3", player.getHealth());
+        assertEquals(3, player.getHealth());
     }
+
+    @Test
+    public void testDefaultScore () {
+        assertEquals(10, player.getScore());
+    }
+
+    @Test
+    public void testSubScore () {
+        player.subScore(4);
+        assertEquals(6, player.getScore());
+    }
+    @Test
+    public void testNegativeScore () {
+        player.subScore(12);
+        assertEquals(0, player.getScore());
+    }
+
+
+
+
 }
 
