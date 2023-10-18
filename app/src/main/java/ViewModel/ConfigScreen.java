@@ -9,8 +9,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import Model.GameObject;
-import Model.Player;
+import model.GameObject;
+import model.Player;
 
 public class ConfigScreen extends AppCompatActivity {
 
