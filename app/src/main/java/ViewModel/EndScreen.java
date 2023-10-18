@@ -8,11 +8,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
-import java.util.Collections;
 import java.util.PriorityQueue;
 
-import Model.GameObject;
-import Model.Player;
+import model.GameObject;
+import model.LeaderBoard;
+import model.Player;
 
 
 public class EndScreen extends AppCompatActivity {
@@ -25,11 +25,11 @@ public class EndScreen extends AppCompatActivity {
         GameObject gameObject = GameObject.getGameObject();
         Player player = Player.getPlayer();
 
-        gameObject.setLeaderboard();
+        LeaderBoard.getLeaderboard().addPlayer(player.copy());
 
         // Make Leaderboard
         PriorityQueue<Player> sortedLeaderboard =
-                new PriorityQueue<Player>(gameObject.getLeaderboard());
+                new PriorityQueue<Player>(LeaderBoard.getLeaderboard().getPlayerList());
 
         SimpleDateFormat format = new SimpleDateFormat("hh:mm MM/dd/yy");
 

@@ -9,11 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-import Model.GameObject;
-import Model.Player;
+import model.GameObject;
+import model.Player;
 
 public class GameScreen2 extends AppCompatActivity {
 
