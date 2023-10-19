@@ -73,9 +73,9 @@ public class GameScreen extends AppCompatActivity {
 
 
         //AShan
-        // Create red dot
+        // Create character
         gameLayout = findViewById(R.id.gameLayout);
-        playerView = new PlayerView(this, playerX, playerY);
+        playerView = new PlayerView(this, playerX, playerY, spriteName);
         gameLayout.addView(playerView);
 
 

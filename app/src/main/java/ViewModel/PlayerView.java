@@ -10,13 +10,19 @@ public class PlayerView extends RelativeLayout {
     private ImageView playerImage;
     private float x, y;
 
-    public PlayerView(Context context, float x, float y) {
+    public PlayerView(Context context, float x, float y, String spriteName) {
         super(context);
         this.x = x;
         this.y = y;
 
         playerImage = new ImageView(context);
-        playerImage.setImageResource(R.drawable.buzz2);
+        if (spriteName.equals("Buzz")) {
+            playerImage.setImageResource(R.drawable.buzz2);
+        } else if (spriteName.equals("Wizard")) {
+            playerImage.setImageResource(R.drawable.purple_wizard);
+        } else if (spriteName.equals("Archer")) {
+            playerImage.setImageResource(R.drawable.green_archer);
+        }
 
         // Set the initial size of the ImageView directly (in pixels)
         int imageWidth = 300; // Set your desired width in pixels
