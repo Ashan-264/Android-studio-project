@@ -26,7 +26,7 @@ public class GameScreen extends AppCompatActivity {
 
     private PlayerView playerView;
 
-    private float playerY, playerX;  //Ashan
+    private float playerY = 1000, playerX = 900;  //Ashan
 
     RelativeLayout gameLayout; //Ashan
 
@@ -75,7 +75,7 @@ public class GameScreen extends AppCompatActivity {
         //AShan
         // Create red dot
         gameLayout = findViewById(R.id.gameLayout);
-        playerView = new PlayerView(this, playerX, playerY,100);
+        playerView = new PlayerView(this, playerX, playerY);
         gameLayout.addView(playerView);
 
 

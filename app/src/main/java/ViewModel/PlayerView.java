@@ -2,37 +2,47 @@ package ViewModel;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
-public class PlayerView extends View {
+public class PlayerView extends RelativeLayout {
 
-    private Paint paint;
+    private ImageView playerImage;
     private float x, y;
-    private int radius;
 
-    public PlayerView(Context context, float x, float y, int radius) {
+    public PlayerView(Context context, float x, float y) {
         super(context);
         this.x = x;
         this.y = y;
-        this.radius = radius;
-        paint = new Paint();
-        paint.setColor(Color.RED);
-        paint.setStyle(Paint.Style.FILL);
-    }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        canvas.drawCircle(x, y, radius, paint);
+        playerImage = new ImageView(context);
+        playerImage.setImageResource(R.drawable.buzz2);
+
+        // Set the initial size of the ImageView directly (in pixels)
+        int imageWidth = 300; // Set your desired width in pixels
+        int imageHeight = 300; // Set your desired height in pixels
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(imageWidth, imageHeight);
+
+
+        layoutParams.leftMargin = (int) x;
+        layoutParams.topMargin = (int) y;
+        playerImage.setLayoutParams(layoutParams);
+
+        // Add the ImageView to the view
+        addView(playerImage);
     }
 
     public void updatePosition(float newX, float newY) {
         x = newX;
         y = newY;
-        invalidate();
+
+        // Update the position of the ImageView
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) playerImage.getLayoutParams();
+        layoutParams.leftMargin = (int) x;
+        layoutParams.topMargin = (int) y;
+        playerImage.setLayoutParams(layoutParams);
     }
+
     public float getX() {
         return x;
     }
@@ -40,9 +50,4 @@ public class PlayerView extends View {
     public float getY() {
         return y;
     }
-
-    public int getRadius() {
-        return radius;
-    }
-
 }
