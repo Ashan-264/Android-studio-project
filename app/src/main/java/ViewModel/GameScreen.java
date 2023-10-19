@@ -13,9 +13,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import Model.GameObject;
 import Model.Player;
 
@@ -28,7 +25,8 @@ public class GameScreen extends AppCompatActivity {
 
     private PlayerView playerView;
 
-    private float playerY = 1000, playerX = 900;  //Ashan
+
+    private int playerY = 100, playerX = 0;  //Ashan
 
     RelativeLayout gameLayout; //Ashan
 
@@ -75,17 +73,19 @@ public class GameScreen extends AppCompatActivity {
         // Update score every 2 seconds
         keepScore(player);
 
+        // Get the screen size
+        Display display = getWindowManager().getDefaultDisplay();
+        screenSize = new Point();
+        display.getSize(screenSize);
 
+        playerX = 10;
+        playerY = screenSize.y - screenSize.y/4;
         //AShan
         // Create character
         gameLayout = findViewById(R.id.gameLayout);
         playerView = new PlayerView(this, playerX, playerY, spriteName);
         gameLayout.addView(playerView);
 
-        // Get the screen size
-        Display display = getWindowManager().getDefaultDisplay();
-        screenSize = new Point();
-        display.getSize(screenSize);
 
 
 
@@ -125,31 +125,11 @@ public class GameScreen extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO logic to move the player (remember to check collisions)
-        int moveSpeed = 40;
-        switch (keyCode) {
-            case KeyEvent.KEYCODE_DPAD_DOWN:
-                if (playerY + moveSpeed < screenSize.y - screenSize.y/6) {
-                    playerY += moveSpeed;
-                }
-                break;
-            case KeyEvent.KEYCODE_DPAD_UP:
-                if (playerY - moveSpeed > 0) {
-                    playerY -= moveSpeed;
-                }
-                break;
-            case KeyEvent.KEYCODE_DPAD_LEFT:
-                if (playerX - moveSpeed > 0) {
-                    playerX -= moveSpeed;
-                }
-                break;
-            case KeyEvent.KEYCODE_DPAD_RIGHT:
-                if (playerX + moveSpeed < screenSize.x - screenSize.x/6) {
-                    playerX += moveSpeed;
-                }
-                break;
-            default:
-                break;
-        }
+        Player player = Player.getPlayer();
+         player.playerMovement(playerX,playerY,screenSize);
+         player.onKeyDown(keyCode,40, event);
+         playerX = player.getPlayerX();
+         playerY = player.getPlayerY();
         playerView.updatePosition(playerX, playerY);
         return true;
     }
