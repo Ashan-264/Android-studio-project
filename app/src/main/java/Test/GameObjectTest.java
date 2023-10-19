@@ -18,7 +18,8 @@ public class GameObjectTest {
     }
     @Test
     public void testPlayer() {
-        Player newPlayer = new Player("Test name","Test Sprite",1);
+        Player newPlayer = Player.getPlayer();
+        newPlayer.setPlayer("Test name","Test Sprite",1);
         String testDifficulty = "Hard";
 
         GameObject gameObject = GameObject.getGameObject();
@@ -31,7 +32,8 @@ public class GameObjectTest {
 
     @Test
     public void testDifficulty() {
-        Player newPlayer = new Player("Test name","Test Sprite",1);
+        Player newPlayer = Player.getPlayer();
+        newPlayer.setPlayer("Test name","Test Sprite",1);
         String testDifficulty = "Hard";
 
         GameObject gameObject = GameObject.getGameObject();

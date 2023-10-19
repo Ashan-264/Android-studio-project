@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.Timer;
@@ -22,6 +24,12 @@ public class GameScreen extends AppCompatActivity {
 
     private TextView playerScoreText;
 
+    private PlayerView playerView;
+
+    private float playerY, playerX;  //Ashan
+
+    RelativeLayout gameLayout; //Ashan
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +37,9 @@ public class GameScreen extends AppCompatActivity {
 
         GameObject gameObject = GameObject.getGameObject();
         Player player = Player.getPlayer();
+
+
+
 
         // Display difficulty
         TextView difficultyText = (TextView) findViewById(R.id.difficulty);
@@ -61,7 +72,15 @@ public class GameScreen extends AppCompatActivity {
         keepScore(player);
 
 
-        Button gameButton =  findViewById(R.id.finishBtn);
+        //AShan
+        // Create red dot
+        gameLayout = findViewById(R.id.gameLayout);
+        playerView = new PlayerView(this, playerX, playerY,100);
+        gameLayout.addView(playerView);
+
+
+
+        Button gameButton = findViewById(R.id.finishBtn);
 
         gameButton.setOnClickListener(v -> {
             handler.removeCallbacks(countdownRunnable);
@@ -91,4 +110,38 @@ public class GameScreen extends AppCompatActivity {
             }
         }, 1000); // Start the countdown after 1 second
     }
+
+
+    // Handle key events to move the player
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO logic to move the player (remember to check collisions)
+        switch (keyCode) {
+            case 20:
+                playerY += 40;
+                break;
+            case 19:
+                playerY -= 40;
+                break;
+            case 21:
+                playerX -= 40;
+                break;
+            case 22:
+                playerX += 40;
+                break;
+            default:
+                break;
+        }
+        playerView.updatePosition(playerX, playerY);
+        return true;
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        // Logic to stop player movement when a key is released
+        // You may need to add logic here to stop the player's movement.
+        return true;
+    }
+
 }
+    // Handle key events to move the player

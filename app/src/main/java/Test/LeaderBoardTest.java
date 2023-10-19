@@ -26,15 +26,20 @@ public class LeaderBoardTest {
 
     @Before
     public void initialization() {
-        player1 = new Player("George Burdell", "Burdell", 3);
+        player1= Player.getPlayer();
+        player1.setPlayer("George Burdell", "Burdell", 3);
         player1.subScore(5);
-        player2 = new Player("Ash", "Ash", 90);
+        player2 = Player.getPlayer();
+        player2.setPlayer("Ash", "Ash", 90);
         player2.subScore(6);
-        player3 = new Player("Archer", "Archer", 30);
+        player3 = Player.getPlayer();
+        player3.setPlayer("Archer", "Archer", 30);
         player3.subScore(4);
-        player4 = new Player("Grover", "Grover", 2);
+        player4 =Player.getPlayer();
+        player4.setPlayer("Grover", "Grover", 2);
         player4.subScore(7);
-        player5 = new Player("Rager", "Rager", 26);
+        player5 = Player.getPlayer();
+        player5.setPlayer("Rager", "Rager", 26);
         player5.subScore(3);
 
         testGame.configGame(player1,"easy");

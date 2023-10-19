@@ -13,6 +13,9 @@ public class Player implements Comparable<Player> {
 
     private Date date;
 
+    private int playerX; //- Ashan
+    private int playerY; //- Ashan
+
     static int MAX_SCORE = 999;
 
     private Player() {
@@ -75,8 +78,28 @@ public class Player implements Comparable<Player> {
         }
     }
 
+public void setPlayerX (int x) {
+        playerX = x;
+}
+
+    public void setPlayerY (int y) {
+        playerY = y;
+    }
+
+    public int getPlayerX () {
+        return playerX;
+    }
+
+    public int getPlayerY () {
+        return playerY;
+    }
+
+
+
     @Override
     public int compareTo(Player compPlayer){
         return compPlayer.score - this.score;
     }
 }
+
+
