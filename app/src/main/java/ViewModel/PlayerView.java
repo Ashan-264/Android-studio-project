@@ -2,6 +2,9 @@ package ViewModel;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Point;
+import android.view.Display;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -10,10 +13,20 @@ public class PlayerView extends RelativeLayout {
     private ImageView playerImage;
     private float x, y;
 
+    private int screenWidth, screenHeight;
+
     public PlayerView(Context context, float x, float y, String spriteName) {
         super(context);
         this.x = x;
         this.y = y;
+
+        // Get screen dimensions
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        screenWidth = size.x;
+        screenHeight = size.y;
 
         playerImage = new ImageView(context);
         if (spriteName.equals("Buzz")) {
@@ -25,8 +38,8 @@ public class PlayerView extends RelativeLayout {
         }
 
         // Set the initial size of the ImageView directly (in pixels)
-        int imageWidth = 300; // Set your desired width in pixels
-        int imageHeight = 300; // Set your desired height in pixels
+        int imageWidth = screenWidth / 6; // Set your desired width in pixels
+        int imageHeight = screenHeight / 6; // Set your desired height in pixels
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(imageWidth, imageHeight);
 
 

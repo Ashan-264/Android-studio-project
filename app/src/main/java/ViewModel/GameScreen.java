@@ -3,8 +3,10 @@ package ViewModel;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Display;
 import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -29,6 +31,8 @@ public class GameScreen extends AppCompatActivity {
     private float playerY = 1000, playerX = 900;  //Ashan
 
     RelativeLayout gameLayout; //Ashan
+
+    Point  screenSize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +82,11 @@ public class GameScreen extends AppCompatActivity {
         playerView = new PlayerView(this, playerX, playerY, spriteName);
         gameLayout.addView(playerView);
 
+        // Get the screen size
+        Display display = getWindowManager().getDefaultDisplay();
+        screenSize = new Point();
+        display.getSize(screenSize);
+
 
 
         Button gameButton = findViewById(R.id.finishBtn);
@@ -116,18 +125,27 @@ public class GameScreen extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO logic to move the player (remember to check collisions)
+        int moveSpeed = 40;
         switch (keyCode) {
-            case 20:
-                playerY += 40;
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                if (playerY + moveSpeed < screenSize.y - screenSize.y/6) {
+                    playerY += moveSpeed;
+                }
                 break;
-            case 19:
-                playerY -= 40;
+            case KeyEvent.KEYCODE_DPAD_UP:
+                if (playerY - moveSpeed > 0) {
+                    playerY -= moveSpeed;
+                }
                 break;
-            case 21:
-                playerX -= 40;
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                if (playerX - moveSpeed > 0) {
+                    playerX -= moveSpeed;
+                }
                 break;
-            case 22:
-                playerX += 40;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                if (playerX + moveSpeed < screenSize.x - screenSize.x/6) {
+                    playerX += moveSpeed;
+                }
                 break;
             default:
                 break;
