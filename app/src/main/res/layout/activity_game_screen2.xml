@@ -9,15 +9,15 @@
     android:background="@drawable/lavamap_2">
 
 
-    <Button
-        android:id="@+id/finishBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="62dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="120dp"
-        android:layout_marginBottom="64dp"
-        android:text="Next Level" />
+<!--    <Button-->
+<!--        android:id="@+id/finishBtn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="62dp"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginEnd="120dp"-->
+<!--        android:layout_marginBottom="64dp"-->
+<!--        android:text="Next Level" />-->
 
     <TextView
         android:id="@+id/gamePlayerName"

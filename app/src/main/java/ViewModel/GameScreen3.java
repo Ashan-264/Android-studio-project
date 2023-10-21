@@ -28,6 +28,8 @@ public class GameScreen3 extends AppCompatActivity {
 
     private int playerY = 200 , playerX = 0;  //Ashan
 
+    private final int moveSpeed = 40;
+
     RelativeLayout gameLayout; //Ashan
 
     Point screenSize;
@@ -83,13 +85,13 @@ public class GameScreen3 extends AppCompatActivity {
 
 
 
-        Button gameButton =  findViewById(R.id.finishBtn);
-
-        gameButton.setOnClickListener(v -> {
-            handler.removeCallbacks(countdownRunnable);
-            Intent game = new Intent(this, EndScreen.class);
-            startActivity(game);
-        });
+//        Button gameButton =  findViewById(R.id.finishBtn);
+//
+//        gameButton.setOnClickListener(v -> {
+//            handler.removeCallbacks(countdownRunnable);
+//            Intent game = new Intent(this, EndScreen.class);
+//            startActivity(game);
+//        });
     }
 
     private void keepScore(Player player) {
@@ -122,6 +124,10 @@ public class GameScreen3 extends AppCompatActivity {
         player.onKeyDown(keyCode,40, event);
         playerX = player.getPlayerX();
         playerY = player.getPlayerY();
+        if (playerX - moveSpeed <= 0) {
+            Intent game = new Intent(GameScreen3.this, EndScreen.class);
+            startActivity(game);
+        }
         playerView.updatePosition(playerX, playerY);
         return true;
     }
