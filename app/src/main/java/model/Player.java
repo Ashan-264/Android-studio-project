@@ -2,7 +2,6 @@ package model;
 
 import android.graphics.Point;
 import android.view.KeyEvent;
-
 import java.util.Date;
 
 public class Player implements Comparable<Player> {
@@ -134,14 +133,8 @@ public void setPlayerX (int x) {
         // You can add logic here to stop the player's movement
     }
 
-
-
-
-
     @Override
     public int compareTo(Player compPlayer){
         return compPlayer.score - this.score;
     }
 }
-
-
