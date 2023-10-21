@@ -3,10 +3,14 @@ package ViewModel;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Display;
+import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import model.GameObject;
@@ -18,6 +22,15 @@ public class GameScreen3 extends AppCompatActivity {
     private Runnable countdownRunnable;
 
     private TextView playerScoreText;
+
+    private PlayerView playerView;
+
+
+    private int playerY = 200 , playerX = 0;  //Ashan
+
+    RelativeLayout gameLayout; //Ashan
+
+    Point screenSize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,19 +56,31 @@ public class GameScreen3 extends AppCompatActivity {
         ImageView playerImage = (ImageView) findViewById(R.id.playerImage);
         String spriteName = player.getSprite().getImageName();
 
-        if (spriteName.equals("Buzz")) {
-            playerImage.setImageResource(R.drawable.buzz2);
-        } else if (spriteName.equals("Wizard")) {
-            playerImage.setImageResource(R.drawable.purple_wizard);
-        } else if (spriteName.equals("Archer")) {
-            playerImage.setImageResource(R.drawable.green_archer);
-        }
+
+        // Get the screen size
+        Display display = getWindowManager().getDefaultDisplay();
+        screenSize = new Point();
+        display.getSize(screenSize);
+
+        playerX = 10;
+        playerY = screenSize.y - screenSize.y/4;
+
+        //AShan
+        // Create character
+        gameLayout = findViewById(R.id.gameLayout3);
+        playerView = new PlayerView(this, playerX, playerY, spriteName);
+        gameLayout.addView(playerView);
+
+
+
 
         // Display score
         playerScoreText = (TextView) findViewById(R.id.playerScore);
         playerScoreText.setText("Score: " + Integer.toString(player.getScore()));
         // Update score every 2 seconds
         keepScore(player);
+
+
 
 
         Button gameButton =  findViewById(R.id.finishBtn);
@@ -88,4 +113,24 @@ public class GameScreen3 extends AppCompatActivity {
             }
         }, 1000); // Start the countdown after 1 second
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO logic to move the player (remember to check collisions)
+        Player player = Player.getPlayer();
+        player.playerMovement(playerX,playerY,screenSize);
+        player.onKeyDown(keyCode,40, event);
+        playerX = player.getPlayerX();
+        playerY = player.getPlayerY();
+        playerView.updatePosition(playerX, playerY);
+        return true;
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        // Logic to stop player movement when a key is released
+        // You may need to add logic here to stop the player's movement.
+        return true;
+    }
+
 }
