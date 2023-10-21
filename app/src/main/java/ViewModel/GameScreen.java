@@ -26,7 +26,7 @@ public class GameScreen extends AppCompatActivity {
     private PlayerView playerView;
 
 
-    private int playerY = 100, playerX = 0;  //Ashan
+    private int playerY = 1300, playerX = 520;  //Ashan
     private final int moveSpeed = 40;
 
     RelativeLayout gameLayout; //Ashan
@@ -73,8 +73,8 @@ public class GameScreen extends AppCompatActivity {
         screenSize = new Point();
         display.getSize(screenSize);
 
-        playerX = 10;
-        playerY = screenSize.y - screenSize.y/4;
+        playerX = 520;
+        playerY = 500;
         //AShan
         // Create character
         gameLayout = findViewById(R.id.gameLayout);

@@ -26,7 +26,7 @@ public class GameScreen3 extends AppCompatActivity {
     private PlayerView playerView;
 
 
-    private int playerY = 200 , playerX = 0;  //Ashan
+    private int playerY = 1300 , playerX = 200;  //Ashan
 
     private final int moveSpeed = 40;
 
@@ -64,8 +64,8 @@ public class GameScreen3 extends AppCompatActivity {
         screenSize = new Point();
         display.getSize(screenSize);
 
-        playerX = 10;
-        playerY = screenSize.y - screenSize.y/4;
+        playerX = 400;
+        playerY = 500;
 
         //AShan
         // Create character
