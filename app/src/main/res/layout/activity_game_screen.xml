@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/gameLayout"
     tools:context=".GameScreen"
-    android:background="@drawable/watermap">
+    android:background="@drawable/watermap_2">
 
 
     <Button
@@ -19,25 +19,25 @@
         android:layout_marginBottom="64dp"
         android:text="Next Level" />
 
+
     <TextView
         android:id="@+id/gamePlayerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="53dp"
         android:textColor="#FFFFFF"
         android:textSize="24sp" />
 
     <ImageView
         android:id="@+id/playerImage"
-        android:layout_width="61dp"
-        android:layout_height="58dp"
+        android:layout_width="53dp"
+        android:layout_height="47dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="496dp"
-        android:clickable ="true"/>
-
+        android:layout_marginBottom="648dp"
+        android:clickable="true" />
 
     <TextView
         android:id="@+id/difficulty"

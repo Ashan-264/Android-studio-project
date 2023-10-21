@@ -71,8 +71,8 @@ public class GameScreen2 extends AppCompatActivity {
         screenSize = new Point();
         display.getSize(screenSize);
 
-        playerX = 10;
-        playerY = screenSize.y - screenSize.y/4;
+        playerX = 400;
+        playerY = screenSize.y - 1700;
 
         //AShan
         // Create character

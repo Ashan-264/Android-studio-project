@@ -26,9 +26,9 @@ public class GameScreen3 extends AppCompatActivity {
     private PlayerView playerView;
 
 
-    private int playerY = 200 , playerX = 0;  //Ashan
+    private int playerY = 200 , playerX = 0;
 
-    RelativeLayout gameLayout; //Ashan
+    RelativeLayout gameLayout;
 
     Point screenSize;
 
@@ -69,8 +69,8 @@ public class GameScreen3 extends AppCompatActivity {
         screenSize = new Point();
         display.getSize(screenSize);
 
-        playerX = 10;
-        playerY = screenSize.y - screenSize.y/4;
+        playerX = 340;
+        playerY = screenSize.y - 1900;
 
         //AShan
         // Create character

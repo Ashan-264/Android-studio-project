@@ -16,6 +16,7 @@ public class Player implements Comparable<Player> {
 
     private Date date;
 
+
     private int playerX; //- Ashan
     private int playerY; //- Ashan
     private Point screenSize;
