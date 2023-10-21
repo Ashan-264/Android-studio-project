@@ -56,13 +56,6 @@ public class GameScreen3 extends AppCompatActivity {
         ImageView playerImage = (ImageView) findViewById(R.id.playerImage);
         String spriteName = player.getSprite().getImageName();
 
-        if (spriteName.equals("Buzz")) {
-            playerImage.setImageResource(R.drawable.buzz2);
-        } else if (spriteName.equals("Wizard")) {
-            playerImage.setImageResource(R.drawable.purple_wizard);
-        } else if (spriteName.equals("Archer")) {
-            playerImage.setImageResource(R.drawable.green_archer);
-        }
 
         // Get the screen size
         Display display = getWindowManager().getDefaultDisplay();
