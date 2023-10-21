@@ -27,6 +27,7 @@ public class GameScreen extends AppCompatActivity {
 
 
     private int playerY = 100, playerX = 0;  //Ashan
+    private final int moveSpeed = 40;
 
     RelativeLayout gameLayout; //Ashan
 
@@ -83,13 +84,13 @@ public class GameScreen extends AppCompatActivity {
 
 
 
-        Button gameButton = findViewById(R.id.finishBtn);
-
-        gameButton.setOnClickListener(v -> {
-            handler.removeCallbacks(countdownRunnable);
-            Intent game = new Intent(this, GameScreen2.class);
-            startActivity(game);
-        });
+//        Button gameButton = findViewById(R.id.finishBtn);
+//
+//        gameButton.setOnClickListener(v -> {
+//            handler.removeCallbacks(countdownRunnable);
+//            Intent game = new Intent(this, GameScreen2.class);
+//            startActivity(game);
+//        });
     }
 
     private void keepScore(Player player) {
@@ -121,9 +122,13 @@ public class GameScreen extends AppCompatActivity {
         // TODO logic to move the player (remember to check collisions)
         Player player = Player.getPlayer();
          player.playerMovement(playerX,playerY,screenSize);
-         player.onKeyDown(keyCode,40, event);
+         player.onKeyDown(keyCode,moveSpeed, event);
          playerX = player.getPlayerX();
          playerY = player.getPlayerY();
+        if (playerX + moveSpeed >= screenSize.x - screenSize.x / 6) {
+            Intent game = new Intent(this, GameScreen2.class);
+            startActivity(game);
+        }
         playerView.updatePosition(playerX, playerY);
         return true;
     }
