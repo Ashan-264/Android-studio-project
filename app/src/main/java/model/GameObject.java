@@ -1,8 +1,6 @@
-package Model;
+package model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.PriorityQueue;
 
 public class GameObject {
 

@@ -13,8 +13,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import Model.GameObject;
-import Model.Player;
+import model.GameObject;
+import model.Player;
 
 public class GameScreen2 extends AppCompatActivity {
 

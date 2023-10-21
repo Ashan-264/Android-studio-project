@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import android.graphics.Point;
 import android.view.KeyEvent;
