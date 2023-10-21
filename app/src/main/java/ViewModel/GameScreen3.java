@@ -85,13 +85,13 @@ public class GameScreen3 extends AppCompatActivity {
 
 
 
-        Button gameButton =  findViewById(R.id.finishBtn);
-
-        gameButton.setOnClickListener(v -> {
-            handler.removeCallbacks(countdownRunnable);
-            Intent game = new Intent(this, EndScreen.class);
-            startActivity(game);
-        });
+//        Button gameButton =  findViewById(R.id.finishBtn);
+//
+//        gameButton.setOnClickListener(v -> {
+//            handler.removeCallbacks(countdownRunnable);
+//            Intent game = new Intent(this, EndScreen.class);
+//            startActivity(game);
+//        });
     }
 
     private void keepScore(Player player) {
@@ -126,6 +126,7 @@ public class GameScreen3 extends AppCompatActivity {
         playerY = player.getPlayerY();
         if (playerX - moveSpeed <= 0) {
             Intent game = new Intent(GameScreen3.this, EndScreen.class);
+            startActivity(game);
         }
         playerView.updatePosition(playerX, playerY);
         return true;
