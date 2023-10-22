@@ -1,5 +1,6 @@
 package model;
 import java.util.ArrayList;
+import android.util.Log;
 
 public class LeaderBoard {
     private ArrayList<Player> playerList;
@@ -14,7 +15,9 @@ public class LeaderBoard {
         return leaderBoard;
     }
     public void addPlayer(Player player) {
+
         playerList.add(player);
+        Log.d("leaderboard1", "Adding player");
     }
     public ArrayList<Player> getPlayerList() {
         return playerList;

@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import model.Player;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -14,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button startBtn = findViewById(R.id.startButton);
         Button exitBtn =  findViewById(R.id.exitButton);
+
+        Player.resetPlayer();
 
         startBtn.setOnClickListener(v -> {
             Intent game = new Intent(MainActivity.this, ConfigScreen.class);

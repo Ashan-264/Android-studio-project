@@ -1,11 +1,17 @@
 package model;
 
 import android.graphics.Point;
+import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
-import java.util.Date;
 
-public class Player implements Comparable<Player> {
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import ViewModel.ScoreObserver;
+
+public class Player implements Comparable<Player>, Subject{
 
     private static Player player;
     private String name;
@@ -21,12 +27,20 @@ public class Player implements Comparable<Player> {
     private Point screenSize;
     static int MAX_SCORE = 999;
 
+    private Handler handler = new Handler();
+    private boolean isScoring = false;
+
+    private boolean isOnLeaderboard = false;
+
+    private List<ScoreObserver> scoreObservers = new ArrayList<>();
+
     private Player() {
         this.name = null;
         this.sprite = null;
         this.health = 0;
         this.score = MAX_SCORE;
         this.date = new Date();
+        this.isOnLeaderboard = false;
     }
 
     public static Player getPlayer() {
@@ -37,12 +51,17 @@ public class Player implements Comparable<Player> {
         return player;
     }
 
+    public static void resetPlayer() {
+        player = null;
+    }
+
     public void setPlayer(String name, String spriteName, int health) {
         this.name = name;
         this.sprite = new Sprite(spriteName);
         this.health = health;
         this.score = MAX_SCORE;
         this.date = new Date();
+        this.isOnLeaderboard = false;
     }
 
     public Player copy() {
@@ -79,6 +98,7 @@ public class Player implements Comparable<Player> {
         if (score < 0) {
             score = 0;
         }
+        this.notifyScoreObservers(score);
     }
 
 public void setPlayerX (int x) {
@@ -138,5 +158,53 @@ public void setPlayerX (int x) {
     @Override
     public int compareTo(Player compPlayer){
         return compPlayer.score - this.score;
+    }
+
+    public void startScoring() {
+        if (!isScoring) {
+            isScoring = true;
+            handler.postDelayed(scoreRunnable, 1000); // 1000 milliseconds = 1 second
+        }
+    }
+
+    private Runnable scoreRunnable = new Runnable() {
+        @Override
+        public void run() {
+            subScore(1);
+            handler.postDelayed(this, 1000); // Post this Runnable again after 1 second
+        }
+    };
+
+    public void stopScoring() {
+        if (isScoring) {
+            handler.removeCallbacks(scoreRunnable);
+            isScoring = false;
+        }
+    }
+
+    @Override
+    public void addScoreObserver(ScoreObserver observer) {
+        scoreObservers.add(observer);
+    }
+
+    // Add a method to remove observers
+    @Override
+    public void removeScoreObserver(ScoreObserver observer) {
+        scoreObservers.remove(observer);
+    }
+
+    @Override
+    public void notifyScoreObservers(int newScore) {
+        for (ScoreObserver observer : scoreObservers) {
+            observer.onScoreChanged(newScore);
+        }
+    }
+
+    public boolean onLeaderboard() {
+        return isOnLeaderboard;
+    }
+
+    public void setAddedToLeaderboard() {
+        isOnLeaderboard = true;
     }
 }
