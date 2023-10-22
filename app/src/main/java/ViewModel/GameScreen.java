@@ -31,7 +31,8 @@ public class GameScreen extends AppCompatActivity {
     private PlayerView playerView;
 
 
-    private int playerY = 1300, playerX = 520;  //Ashan
+    private int playerX, playerY;
+//    private int playerY = 1300, playerX = 520; //Ashan
     private final int moveSpeed = 40;
 
     RelativeLayout gameLayout; //Ashan
@@ -139,11 +140,46 @@ public class GameScreen extends AppCompatActivity {
 //        int blue = Color.blue(pixel1);
 //        int green = Color.green(pixel1);
 //        Log.d("pixel", "color codes:" + Integer.toHexString(pixel1));
+        int newX = player.getPlayerX(), newY = player.getPlayerY();
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                newX = playerX;
+                newY = playerY + moveSpeed;
+                break;
+            case KeyEvent.KEYCODE_DPAD_UP:
+                newX = playerX;
+                newY = playerY - moveSpeed;
+                break;
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                newX = playerX - moveSpeed;
+                newY = playerY;
+                break;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                newX = playerX + moveSpeed;
+                newY = playerY;
+                break;
+        }
 
-        player.playerMovement(playerX,playerY,screenSize);
-         player.onKeyDown(keyCode,moveSpeed, event);
-         playerX = player.getPlayerX();
-         playerY = player.getPlayerY();
+        boolean legalMove = false;
+        // top square, entrance rectangle, vertical passage, horizontal passage
+        if (newX >= 320 && newX <= 800 && newY >= 180 && newY <= 700) {
+            legalMove = true;
+        } else if (newX >= 80 && newX <= 320 && newY >= 420 && newY <= 500) {
+            legalMove = true;
+        } else if (newX >= 80 && newX <= 160 && newY >= 420 && newY <= 1540) {
+            legalMove = true;
+        } else if (newX >= 80 && newY >= 1380 && newY <= 1540) {
+            legalMove = true;
+        }
+
+        if (legalMove) {
+            player.playerMovement(playerX,playerY,screenSize); // frontend position is updated here
+            player.onKeyDown(keyCode,moveSpeed, event); // backend position is updated here
+        }
+//        player.playerMovement(playerX,playerY,screenSize); // frontend position is updated here
+//        player.onKeyDown(keyCode,moveSpeed, event); // backend position is updated here
+        playerX = player.getPlayerX();
+        playerY = player.getPlayerY();
         if (playerX + moveSpeed >= screenSize.x - screenSize.x / 6) {
             if (playerY > 1460) {
                 Intent game = new Intent(this, GameScreen2.class);
@@ -152,9 +188,17 @@ public class GameScreen extends AppCompatActivity {
 
         }
         playerView.updatePosition(playerX, playerY);
+//        Log.d("currLocation", "x:" + playerX + "y: " + playerY);
+        // top left of yellow box is 320, 180
+        // top of passage entrance 320, 420
+        // bottom of passage entrance 320, 500
+        // bottom left of yellow box is 320, 700
 
-
-
+        // top left of passage 80, 420
+        // bottom left of vertical passage 80, 1380
+        // bottom left of path 80, 1540
+        // right edge of passage 160, 1380
+        // bottom edge of passage 160, 1540
 
         return true;
     }
