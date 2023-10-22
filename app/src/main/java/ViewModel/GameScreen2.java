@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Display;
 import android.view.KeyEvent;
 import android.widget.Button;
@@ -123,11 +124,14 @@ public class GameScreen2 extends AppCompatActivity {
         player.onKeyDown(keyCode,40, event);
         playerX = player.getPlayerX();
         playerY = player.getPlayerY();
-        if (playerX + moveSpeed >= screenSize.x - screenSize.x / 6) {
-            Intent game = new Intent(this, GameScreen3.class);
-            startActivity(game);
+        if (playerX + moveSpeed >= screenSize.x - screenSize.x / 8) {
+            if (playerY < 340) {
+                Intent game = new Intent(this, GameScreen3.class);
+                startActivity(game);
+            }
         }
         playerView.updatePosition(playerX, playerY);
+        Log.d("position", "x:" + playerX + "y:" + playerY);
         return true;
     }
 
