@@ -3,9 +3,14 @@ package ViewModel;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Display;
 import android.view.KeyEvent;
 import android.widget.Button;
@@ -121,15 +126,36 @@ public class GameScreen extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO logic to move the player (remember to check collisions)
         Player player = Player.getPlayer();
-         player.playerMovement(playerX,playerY,screenSize);
+//        RelativeLayout gameLayout = findViewById(R.id.gameLayout);
+//        int pixel1;
+//        Drawable backgroundDrawable = gameLayout.getBackground();
+//        BitmapDrawable bitmapDrawable = (BitmapDrawable) backgroundDrawable;
+//        Bitmap backgroundBitmap = bitmapDrawable.getBitmap();
+//        int x = playerX;
+//        int y = playerY;
+//
+//        pixel1 = backgroundBitmap.getPixel(x, y);
+//        int red = Color.red(pixel1);
+//        int blue = Color.blue(pixel1);
+//        int green = Color.green(pixel1);
+//        Log.d("pixel", "color codes:" + Integer.toHexString(pixel1));
+
+        player.playerMovement(playerX,playerY,screenSize);
          player.onKeyDown(keyCode,moveSpeed, event);
          playerX = player.getPlayerX();
          playerY = player.getPlayerY();
         if (playerX + moveSpeed >= screenSize.x - screenSize.x / 6) {
-            Intent game = new Intent(this, GameScreen2.class);
-            startActivity(game);
+            if (playerY > 1460) {
+                Intent game = new Intent(this, GameScreen2.class);
+                startActivity(game);
+            }
+
         }
         playerView.updatePosition(playerX, playerY);
+
+
+
+
         return true;
     }
 

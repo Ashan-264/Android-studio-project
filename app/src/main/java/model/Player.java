@@ -1,6 +1,7 @@
 package model;
 
 import android.graphics.Point;
+import android.util.Log;
 import android.view.KeyEvent;
 import java.util.Date;
 
@@ -121,11 +122,12 @@ public void setPlayerX (int x) {
                 }
                 break;
             case KeyEvent.KEYCODE_DPAD_RIGHT:
-                if (playerX + moveSpeed < screenSize.x - screenSize.x / 6) {
+                if (playerX + moveSpeed < screenSize.x - screenSize.x / 10) {
                     playerX += moveSpeed;
                 }
                 break;
         }
+        Log.d("position", "x:" + playerX + "y:" + playerY);
     }
 
     public void onKeyUp(int keyCode) {
