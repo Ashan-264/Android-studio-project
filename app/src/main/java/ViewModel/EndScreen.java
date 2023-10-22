@@ -25,7 +25,12 @@ public class EndScreen extends AppCompatActivity {
         GameObject gameObject = GameObject.getGameObject();
         Player player = Player.getPlayer();
 
-        LeaderBoard.getLeaderboard().addPlayer(player.copy());
+        player.stopScoring();
+
+        if (!player.onLeaderboard()) {
+            LeaderBoard.getLeaderboard().addPlayer(player.copy());
+            player.setAddedToLeaderboard();
+        }
 
         // Make Leaderboard
         PriorityQueue<Player> sortedLeaderboard =

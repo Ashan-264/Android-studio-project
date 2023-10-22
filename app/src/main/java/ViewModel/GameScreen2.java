@@ -17,7 +17,7 @@ import android.widget.TextView;
 import model.GameObject;
 import model.Player;
 
-public class GameScreen2 extends AppCompatActivity {
+public class GameScreen2 extends AppCompatActivity implements ScoreObserver{
 
     private Handler handler = new Handler();
     private Runnable countdownRunnable;
@@ -44,6 +44,7 @@ public class GameScreen2 extends AppCompatActivity {
 
         GameObject gameObject = GameObject.getGameObject();
         Player player = gameObject.getPlayer();
+        Player.getPlayer().addScoreObserver(this);
 
         // Display difficulty
         TextView difficultyText = (TextView) findViewById(R.id.difficulty);
@@ -82,7 +83,6 @@ public class GameScreen2 extends AppCompatActivity {
         playerScoreText = (TextView) findViewById(R.id.playerScore);
         playerScoreText.setText("Score: " + Integer.toString(player.getScore()));
         // Update score every 2 seconds
-        keepScore(player);
 
 
 //        Button gameButton =  findViewById(R.id.finishBtn);
@@ -94,28 +94,34 @@ public class GameScreen2 extends AppCompatActivity {
 //        });
     }
 
-    private void keepScore(Player player) {
-        handler.postDelayed(countdownRunnable = new Runnable() {
-            @Override
-            public void run() {
-                // Decrement the count by 1
-                player.subScore(1);
+//    private void keepScore(Player player) {
+//        handler.postDelayed(countdownRunnable = new Runnable() {
+//            @Override
+//            public void run() {
+//                // Decrement the count by 1
+//                player.subScore(1);
+//
+//                // Update the TextView
+//                playerScoreText.setText("Score: " + Integer.toString(player.getScore()));
+//
+//                if (player.getScore() > 0) {
+//                    // Schedule the next decrement after 1 second
+//                    handler.postDelayed(this, 1000);
+//                } else {
+//                    // Count reached 0, you can take further action here
+//                    Intent game = new Intent(GameScreen2.this, EndScreen.class);
+//                    startActivity(game);
+//                }
+//            }
+//        }, 1000); // Start the countdown after 1 second
+//    }
 
-                // Update the TextView
-                playerScoreText.setText("Score: " + Integer.toString(player.getScore()));
 
-                if (player.getScore() > 0) {
-                    // Schedule the next decrement after 1 second
-                    handler.postDelayed(this, 1000);
-                } else {
-                    // Count reached 0, you can take further action here
-                    Intent game = new Intent(GameScreen2.this, EndScreen.class);
-                    startActivity(game);
-                }
-            }
-        }, 1000); // Start the countdown after 1 second
+    @Override
+    public void onScoreChanged(int newScore) {
+        playerScoreText = (TextView) findViewById(R.id.playerScore);
+        playerScoreText.setText("Score: " + Integer.toString(newScore));
     }
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO logic to move the player (remember to check collisions)
