@@ -1,7 +1,6 @@
-package ViewModel;
+package viewmodel;
 
 import android.content.Context;
-import android.graphics.Canvas;
 import android.graphics.Point;
 import android.view.Display;
 import android.view.WindowManager;
@@ -11,9 +10,11 @@ import android.widget.RelativeLayout;
 public class PlayerView extends RelativeLayout {
 
     private ImageView playerImage;
-    private float x, y;
+    private float x;
+    private float y;
 
-    private int screenWidth, screenHeight;
+    private int screenWidth;
+    private int screenHeight;
 
     public PlayerView(Context context, float x, float y, String spriteName) {
         super(context);
@@ -40,7 +41,8 @@ public class PlayerView extends RelativeLayout {
         // Set the initial size of the ImageView directly (in pixels)
         int imageWidth = screenWidth / 10; // Set your desired width in pixels
         int imageHeight = screenHeight / 10; // Set your desired height in pixels
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(imageWidth, imageHeight);
+        RelativeLayout.LayoutParams layoutParams =
+                new RelativeLayout.LayoutParams(imageWidth, imageHeight);
 
 
         layoutParams.leftMargin = (int) x;
@@ -56,7 +58,8 @@ public class PlayerView extends RelativeLayout {
         y = newY;
 
         // Update the position of the ImageView
-        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) playerImage.getLayoutParams();
+        RelativeLayout.LayoutParams layoutParams =
+                (RelativeLayout.LayoutParams) playerImage.getLayoutParams();
         layoutParams.leftMargin = (int) x;
         layoutParams.topMargin = (int) y;
         playerImage.setLayoutParams(layoutParams);

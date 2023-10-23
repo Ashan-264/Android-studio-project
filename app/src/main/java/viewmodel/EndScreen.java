@@ -1,4 +1,4 @@
-package ViewModel;
+package viewmodel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -48,28 +48,28 @@ public class EndScreen extends AppCompatActivity {
 
         lbPlayer = sortedLeaderboard.poll();
         if (lbPlayer != null) {
-            leaderText= (TextView) findViewById(R.id.leaderBoard2);
+            leaderText = (TextView) findViewById(R.id.leaderBoard2);
             leaderText.setText(Integer.toString(lbPlayer.getScore()) + " - " +  lbPlayer.getName()
                     + " (" + format.format(lbPlayer.getDate()) + ")");
         }
 
         lbPlayer = sortedLeaderboard.poll();
         if (lbPlayer != null) {
-            leaderText= (TextView) findViewById(R.id.leaderBoard3);
+            leaderText = (TextView) findViewById(R.id.leaderBoard3);
             leaderText.setText(Integer.toString(lbPlayer.getScore()) + " - " +  lbPlayer.getName()
                     + " (" + format.format(lbPlayer.getDate()) + ")");
         }
 
         lbPlayer = sortedLeaderboard.poll();
         if (lbPlayer != null) {
-            leaderText= (TextView) findViewById(R.id.leaderBoard4);
+            leaderText = (TextView) findViewById(R.id.leaderBoard4);
             leaderText.setText(Integer.toString(lbPlayer.getScore()) + " - " +  lbPlayer.getName()
                     + " (" + format.format(lbPlayer.getDate()) + ")");
         }
 
         lbPlayer = sortedLeaderboard.poll();
         if (lbPlayer != null) {
-            leaderText= (TextView) findViewById(R.id.leaderBoard5);
+            leaderText = (TextView) findViewById(R.id.leaderBoard5);
             leaderText.setText(Integer.toString(lbPlayer.getScore()) + " - " +  lbPlayer.getName()
                     + " (" + format.format(lbPlayer.getDate()) + ")");
         }
@@ -77,7 +77,7 @@ public class EndScreen extends AppCompatActivity {
 
 
         // Display score
-        TextView scoreText= (TextView) findViewById(R.id.scoreText);
+        TextView scoreText = (TextView) findViewById(R.id.scoreText);
         scoreText.setText("Score: " + Integer.toString(player.getScore()));
 
         Button restartBtn =  findViewById(R.id.restartButton);

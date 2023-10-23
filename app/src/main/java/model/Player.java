@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import ViewModel.ScoreObserver;
+import viewmodel.ScoreObserver;
 
-public class Player implements Comparable<Player>, Subject{
+public class Player implements Comparable<Player>, Subject {
 
     private static Player player;
     private String name;
@@ -25,7 +25,7 @@ public class Player implements Comparable<Player>, Subject{
     private int playerX; //- Ashan
     private int playerY; //- Ashan
     private Point screenSize;
-    static int MAX_SCORE = 999;
+    private static int maxScore = 999;
     private PlayerMovement playerMovement;
 
     private Handler handler = new Handler();
@@ -39,7 +39,7 @@ public class Player implements Comparable<Player>, Subject{
         this.name = null;
         this.sprite = null;
         this.health = 0;
-        this.score = MAX_SCORE;
+        this.score = maxScore;
         this.date = new Date();
         this.isOnLeaderboard = false;
     }
@@ -60,7 +60,7 @@ public class Player implements Comparable<Player>, Subject{
         this.name = name;
         this.sprite = new Sprite(spriteName);
         this.health = health;
-        this.score = MAX_SCORE;
+        this.score = maxScore;
         this.date = new Date();
         this.isOnLeaderboard = false;
     }
@@ -89,9 +89,13 @@ public class Player implements Comparable<Player>, Subject{
         return sprite;
     }
 
-    public int getScore() { return score;}
+    public int getScore() {
+        return score;
+    }
 
-    public Date getDate() {return date;}
+    public Date getDate() {
+        return date;
+    }
 
     public void subScore(int amount) {
         score -= amount;
@@ -102,19 +106,19 @@ public class Player implements Comparable<Player>, Subject{
         this.notifyScoreObservers(score);
     }
 
-public void setPlayerX (int x) {
+    public void setPlayerX(int x) {
         playerX = x;
-}
+    }
 
-    public void setPlayerY (int y) {
+    public void setPlayerY(int y) {
         playerY = y;
     }
 
-    public int getPlayerX () {
+    public int getPlayerX() {
         return playerX;
     }
 
-    public int getPlayerY () {
+    public int getPlayerY() {
         return playerY;
     }
 
@@ -131,7 +135,7 @@ public void setPlayerX (int x) {
     }
 
     public void moveUp(int moveSpeed) {
-        if (playerY - moveSpeed > -135 ) {
+        if (playerY - moveSpeed > -135) {
             playerY -= moveSpeed;
         }
     }
@@ -150,26 +154,28 @@ public void setPlayerX (int x) {
     public void onKeyDown(int keyCode, int moveSpeed, KeyEvent event) {
         // Handle key down events to move the player
         switch (keyCode) {
-            case KeyEvent.KEYCODE_DPAD_DOWN:
-                PlayerMovement downMovement = new MoveDownStrategy();
-                setMovementStrategy(downMovement);
-                downMovement.move(player,moveSpeed);
-                break;
-            case KeyEvent.KEYCODE_DPAD_UP:
-                PlayerMovement upMovement = new MoveUpStrategy();
-                setMovementStrategy(upMovement);
-                upMovement.move(player,moveSpeed);
-                break;
-            case KeyEvent.KEYCODE_DPAD_LEFT:
-                PlayerMovement LeftMovement = new MoveLeftStrategy();
-                setMovementStrategy(LeftMovement);
-                LeftMovement.move(player,moveSpeed);
-                break;
-            case KeyEvent.KEYCODE_DPAD_RIGHT:
-                PlayerMovement RightMovement = new MoveRightStrategy();
-                setMovementStrategy(RightMovement);
-                RightMovement.move(player,moveSpeed);
-                break;
+        case KeyEvent.KEYCODE_DPAD_DOWN:
+            PlayerMovement downMovement = new MoveDownStrategy();
+            setMovementStrategy(downMovement);
+            downMovement.move(player, moveSpeed);
+            break;
+        case KeyEvent.KEYCODE_DPAD_UP:
+            PlayerMovement upMovement = new MoveUpStrategy();
+            setMovementStrategy(upMovement);
+            upMovement.move(player, moveSpeed);
+            break;
+        case KeyEvent.KEYCODE_DPAD_LEFT:
+            PlayerMovement leftMovement = new MoveLeftStrategy();
+            setMovementStrategy(leftMovement);
+            leftMovement.move(player, moveSpeed);
+            break;
+        case KeyEvent.KEYCODE_DPAD_RIGHT:
+            PlayerMovement rightMovement = new MoveRightStrategy();
+            setMovementStrategy(rightMovement);
+            rightMovement.move(player, moveSpeed);
+            break;
+        default:
+            break;
         }
         Log.d("position", "x:" + playerX + "y:" + playerY);
     }
@@ -180,7 +186,7 @@ public void setPlayerX (int x) {
     }
 
     @Override
-    public int compareTo(Player compPlayer){
+    public int compareTo(Player compPlayer) {
         return compPlayer.score - this.score;
     }
 

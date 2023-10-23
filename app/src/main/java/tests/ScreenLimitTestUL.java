@@ -1,6 +1,5 @@
 package tests;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,12 +17,12 @@ public class ScreenLimitTestUL {
     }
 
     @Test
-    public void testUpperBound () {
+    public void testUpperBound() {
         player.moveUp(40);
         assertEquals(-100, player.getPlayerY());
     }
     @Test
-    public void testLeftBound () {
+    public void testLeftBound() {
         player.moveLeft(40);
         assertEquals(10, player.getPlayerX());
     }

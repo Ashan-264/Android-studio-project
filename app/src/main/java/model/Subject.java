@@ -1,6 +1,6 @@
 package model;
 
-import ViewModel.ScoreObserver;
+import viewmodel.ScoreObserver;
 
 public interface Subject {
     void addScoreObserver(ScoreObserver observer);
