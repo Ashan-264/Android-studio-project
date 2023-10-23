@@ -131,44 +131,44 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver{
         // TODO logic to move the player (remember to check collisions)
         Player player = Player.getPlayer();
 
-//        int newX = player.getPlayerX(), newY = player.getPlayerY();
-//        switch (keyCode) {
-//            case KeyEvent.KEYCODE_DPAD_DOWN:
-//                newX = playerX;
-//                newY = playerY + moveSpeed;
-//                break;
-//            case KeyEvent.KEYCODE_DPAD_UP:
-//                newX = playerX;
-//                newY = playerY - moveSpeed;
-//                break;
-//            case KeyEvent.KEYCODE_DPAD_LEFT:
-//                newX = playerX - moveSpeed;
-//                newY = playerY;
-//                break;
-//            case KeyEvent.KEYCODE_DPAD_RIGHT:
-//                newX = playerX + moveSpeed;
-//                newY = playerY;
-//                break;
-//        }
-//
-//        boolean legalMove = false;
-//        // top square, entrance rectangle, vertical passage, horizontal passage
-//        if (newX >= 320 && newX <= 800 && newY >= 180 && newY <= 700) {
-//            legalMove = true;
-//        } else if (newX >= 80 && newX <= 320 && newY >= 420 && newY <= 500) {
-//            legalMove = true;
-//        } else if (newX >= 80 && newX <= 160 && newY >= 420 && newY <= 1540) {
-//            legalMove = true;
-//        } else if (newX >= 80 && newY >= 1380 && newY <= 1540) {
-//            legalMove = true;
-//        }
-//
-//        if (legalMove) {
-//            player.playerMovement(playerX,playerY,screenSize); // frontend position is updated here
-//            player.onKeyDown(keyCode,moveSpeed, event); // backend position is updated here
-//        }
-        player.playerMovement(playerX,playerY,screenSize);
-        player.onKeyDown(keyCode,40, event);
+        int newX = player.getPlayerX(), newY = player.getPlayerY();
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                newX = playerX;
+                newY = playerY + moveSpeed;
+                break;
+            case KeyEvent.KEYCODE_DPAD_UP:
+                newX = playerX;
+                newY = playerY - moveSpeed;
+                break;
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                newX = playerX - moveSpeed;
+                newY = playerY;
+                break;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                newX = playerX + moveSpeed;
+                newY = playerY;
+                break;
+        }
+
+        boolean legalMove = false;
+        // top square, entrance rectangle, vertical passage, horizontal passage
+        if (newX >= 200 && newX <= 600 && newY >= 180 && newY <= 820) {
+            legalMove = true;
+        } else if (newX >= 600 && newX <= 880 && newY >= 460 && newY <= 580) {
+            legalMove = true;
+        } else if (newX >= 800 && newX <= 880 && newY >= 500 && newY <= 1540) {
+            legalMove = true;
+        } else if (newX <= 880 && newY >= 1420 && newY <= 1540) {
+            legalMove = true;
+        }
+
+        if (legalMove) {
+            player.playerMovement(playerX,playerY,screenSize); // frontend position is updated here
+            player.onKeyDown(keyCode,moveSpeed, event); // backend position is updated here
+        }
+//        player.playerMovement(playerX,playerY,screenSize);
+//        player.onKeyDown(keyCode,40, event);
         playerX = player.getPlayerX();
         playerY = player.getPlayerY();
         if (playerX - moveSpeed <= 0) {
