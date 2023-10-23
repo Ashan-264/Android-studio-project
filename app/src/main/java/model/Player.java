@@ -124,7 +124,7 @@ public void setPlayerX (int x) {
     }
 
     public void moveDown(int moveSpeed) {
-        if (playerY + moveSpeed < screenSize.y - screenSize.y / 6) {
+        if (playerY + moveSpeed <= 1780) {
             playerY += moveSpeed;
         }
     }
@@ -142,7 +142,7 @@ public void setPlayerX (int x) {
     }
 
     public void moveRight(int moveSpeed) {
-        if (playerX + moveSpeed < screenSize.x - screenSize.x / 10) {
+        if (playerX + moveSpeed <= 970) {
             playerX += moveSpeed;
         }
     }
