@@ -26,6 +26,7 @@ public class Player implements Comparable<Player>, Subject{
     private int playerY; //- Ashan
     private Point screenSize;
     static int MAX_SCORE = 999;
+    private PlayerMovement playerMovement;
 
     private Handler handler = new Handler();
     private boolean isScoring = false;
@@ -150,16 +151,24 @@ public void setPlayerX (int x) {
         // Handle key down events to move the player
         switch (keyCode) {
             case KeyEvent.KEYCODE_DPAD_DOWN:
-                moveDown(moveSpeed);
+                PlayerMovement downMovement = new MoveDownStrategy();
+                setMovementStrategy(downMovement);
+                downMovement.move(player,moveSpeed);
                 break;
             case KeyEvent.KEYCODE_DPAD_UP:
-                moveUp(moveSpeed);
+                PlayerMovement upMovement = new MoveUpStrategy();
+                setMovementStrategy(upMovement);
+                upMovement.move(player,moveSpeed);
                 break;
             case KeyEvent.KEYCODE_DPAD_LEFT:
-                moveLeft(moveSpeed);
+                PlayerMovement LeftMovement = new MoveLeftStrategy();
+                setMovementStrategy(LeftMovement);
+                LeftMovement.move(player,moveSpeed);
                 break;
             case KeyEvent.KEYCODE_DPAD_RIGHT:
-                moveRight(moveSpeed);
+                PlayerMovement RightMovement = new MoveRightStrategy();
+                setMovementStrategy(RightMovement);
+                RightMovement.move(player,moveSpeed);
                 break;
         }
         Log.d("position", "x:" + playerX + "y:" + playerY);
@@ -221,5 +230,15 @@ public void setPlayerX (int x) {
 
     public void setAddedToLeaderboard() {
         isOnLeaderboard = true;
+    }
+
+    public void setMovementStrategy(PlayerMovement strategy) {
+        this.playerMovement = strategy;
+    }
+
+    public void move(int moveSpeed) {
+        if (playerMovement != null) {
+            playerMovement.move(this, moveSpeed);
+        }
     }
 }
