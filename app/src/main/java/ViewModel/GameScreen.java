@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import model.GameObject;
 import model.Player;
+import model.PlayerMovement;
 
 public class GameScreen extends AppCompatActivity implements ScoreObserver{
 
