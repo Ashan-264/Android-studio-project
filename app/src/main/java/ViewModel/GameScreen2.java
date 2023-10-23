@@ -131,7 +131,7 @@ public class GameScreen2 extends AppCompatActivity implements ScoreObserver{
         playerX = player.getPlayerX();
         playerY = player.getPlayerY();
         if (playerX + moveSpeed >= screenSize.x - screenSize.x / 8) {
-            if (playerY < 340) {
+            if (playerY <= 340) {
                 Intent game = new Intent(this, GameScreen3.class);
                 startActivity(game);
             }
