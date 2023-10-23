@@ -123,28 +123,43 @@ public void setPlayerX (int x) {
         this.screenSize = screenSize;
     }
 
+    public void moveDown(int moveSpeed) {
+        if (playerY + moveSpeed < screenSize.y - screenSize.y / 6) {
+            playerY += moveSpeed;
+        }
+    }
+
+    public void moveUp(int moveSpeed) {
+        if (playerY - moveSpeed > -135 ) {
+            playerY -= moveSpeed;
+        }
+    }
+
+    public void moveLeft(int moveSpeed) {
+        if (playerX - moveSpeed > 0) {
+            playerX -= moveSpeed;
+        }
+    }
+
+    public void moveRight(int moveSpeed) {
+        if (playerX + moveSpeed < screenSize.x - screenSize.x / 10) {
+            playerX += moveSpeed;
+        }
+    }
     public void onKeyDown(int keyCode, int moveSpeed, KeyEvent event) {
         // Handle key down events to move the player
         switch (keyCode) {
             case KeyEvent.KEYCODE_DPAD_DOWN:
-                if (playerY + moveSpeed < screenSize.y - screenSize.y / 6) {
-                    playerY += moveSpeed;
-                }
+                moveDown(moveSpeed);
                 break;
             case KeyEvent.KEYCODE_DPAD_UP:
-                if (playerY - moveSpeed > -135 ) {
-                    playerY -= moveSpeed;
-                }
+                moveUp(moveSpeed);
                 break;
             case KeyEvent.KEYCODE_DPAD_LEFT:
-                if (playerX - moveSpeed > 0) {
-                    playerX -= moveSpeed;
-                }
+                moveLeft(moveSpeed);
                 break;
             case KeyEvent.KEYCODE_DPAD_RIGHT:
-                if (playerX + moveSpeed < screenSize.x - screenSize.x / 10) {
-                    playerX += moveSpeed;
-                }
+                moveRight(moveSpeed);
                 break;
         }
         Log.d("position", "x:" + playerX + "y:" + playerY);
