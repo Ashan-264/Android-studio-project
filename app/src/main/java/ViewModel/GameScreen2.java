@@ -126,8 +126,48 @@ public class GameScreen2 extends AppCompatActivity implements ScoreObserver{
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO logic to move the player (remember to check collisions)
         Player player = Player.getPlayer();
-        player.playerMovement(playerX,playerY,screenSize);
-        player.onKeyDown(keyCode,40, event);
+
+        int newX = player.getPlayerX(), newY = player.getPlayerY();
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                newX = playerX;
+                newY = playerY + moveSpeed;
+                break;
+            case KeyEvent.KEYCODE_DPAD_UP:
+                newX = playerX;
+                newY = playerY - moveSpeed;
+                break;
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                newX = playerX - moveSpeed;
+                newY = playerY;
+                break;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                newX = playerX + moveSpeed;
+                newY = playerY;
+                break;
+        }
+
+        boolean legalMove = false;
+        // top square, vertical passage, horizontal passage, vertical passage, horizontal passage
+        if (newX >= 130 && newX <= 610 && newY >= 220 && newY <= 740) {
+            legalMove = true;
+        } else if (newX >= 410 && newX <= 530 && newY >= 700 && newY <= 1580) {
+            legalMove = true;
+        } else if (newX >= 410 && newX <= 930 && newY >= 1500 && newY <= 1580) {
+            legalMove = true;
+        } else if (newX >= 850 && newX <= 930 && newY >= 260 && newY <= 1580) {
+            legalMove = true;
+        } else if (newX >= 850 && newY >= 260 && newY <= 340) {
+            legalMove = true;
+        }
+
+        if (legalMove) {
+            player.playerMovement(playerX,playerY,screenSize); // frontend position is updated here
+            player.onKeyDown(keyCode,moveSpeed, event); // backend position is updated here
+        }
+
+//        player.playerMovement(playerX,playerY,screenSize);
+//        player.onKeyDown(keyCode,40, event);
         playerX = player.getPlayerX();
         playerY = player.getPlayerY();
         if (playerX + moveSpeed >= screenSize.x - screenSize.x / 8) {
@@ -137,7 +177,7 @@ public class GameScreen2 extends AppCompatActivity implements ScoreObserver{
             }
         }
         playerView.updatePosition(playerX, playerY);
-        Log.d("position", "x:" + playerX + "y:" + playerY);
+//        Log.d("position", "x:" + playerX + "y:" + playerY);
         return true;
     }
 

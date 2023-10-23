@@ -175,7 +175,7 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver{
             legalMove = true;
         } else if (newX >= 80 && newX <= 160 && newY >= 420 && newY <= 1540) {
             legalMove = true;
-        } else if (newX >= 80 && newY >= 1380 && newY <= 1540) {
+        } else if (newX >= 80 && newY >= 1400 && newY <= 1540) {
             legalMove = true;
         }
 
