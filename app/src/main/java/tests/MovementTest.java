@@ -1,6 +1,5 @@
 package tests;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,22 +17,22 @@ public class MovementTest {
     }
 
     @Test
-    public void testUp () {
+    public void testUp() {
         player.moveUp(40);
         assertEquals(460, player.getPlayerY());
     }
     @Test
-    public void testDown () {
+    public void testDown() {
         player.moveDown(40);
         assertEquals(540, player.getPlayerY());
     }
     @Test
-    public void testRight () {
+    public void testRight() {
         player.moveRight(40);
         assertEquals(540, player.getPlayerX());
     }
     @Test
-    public void testLeft () {
+    public void testLeft() {
         player.moveLeft(40);
         assertEquals(460, player.getPlayerX());
     }

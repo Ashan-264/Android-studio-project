@@ -1,6 +1,5 @@
 package tests;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,12 +17,12 @@ public class WallCollisionTestMap1 {
     }
 
     @Test
-    public void testUpperWall () {
+    public void testUpperWall() {
         player.moveUp(40);
         assertEquals(180, player.getPlayerY());
     }
     @Test
-    public void testLeftWall () {
+    public void testLeftWall() {
         player.moveLeft(40);
         assertEquals(320, player.getPlayerX());
     }

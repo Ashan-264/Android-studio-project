@@ -1,28 +1,21 @@
-package ViewModel;
+package viewmodel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.Point;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Display;
 import android.view.KeyEvent;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import model.GameObject;
 import model.Player;
-import model.PlayerMovement;
 
-public class GameScreen extends AppCompatActivity implements ScoreObserver{
+public class GameScreen extends AppCompatActivity implements ScoreObserver {
 
     private Handler handler = new Handler();
     private Runnable countdownRunnable;
@@ -32,13 +25,13 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver{
     private PlayerView playerView;
 
 
-    private int playerX, playerY;
-//    private int playerY = 1300, playerX = 520; //Ashan
+    private int playerX;
+    private int playerY;
     private final int moveSpeed = 40;
 
-    RelativeLayout gameLayout; //Ashan
+    private RelativeLayout gameLayout;
 
-    Point  screenSize;
+    private Point  screenSize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +41,6 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver{
         GameObject gameObject = GameObject.getGameObject();
         Player player = Player.getPlayer();
         Player.getPlayer().addScoreObserver(this);
-
-
 
 
         // Display difficulty
@@ -67,7 +58,6 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver{
         // Display player sprite
         ImageView playerImage = (ImageView) findViewById(R.id.playerImage);
         String spriteName = player.getSprite().getImageName();
-
 
 
         // Display score
@@ -88,84 +78,46 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver{
         gameLayout = findViewById(R.id.gameLayout);
         playerView = new PlayerView(this, playerX, playerY, spriteName);
         gameLayout.addView(playerView);
-
-
-
-
-//        Button gameButton = findViewById(R.id.finishBtn);
-//
-//        gameButton.setOnClickListener(v -> {
-//            handler.removeCallbacks(countdownRunnable);
-//            Intent game = new Intent(this, GameScreen2.class);
-//            startActivity(game);
-//        });
     }
-
-//    private void keepScore(Player player) {
-//        handler.postDelayed(countdownRunnable = new Runnable() {
-//            @Override
-//            public void run() {
-//                // Decrement the count by 1
-//                player.subScore(1);
-//
-//                // Update the TextView
-//                playerScoreText.setText("Score: " + Integer.toString(player.getScore()));
-//
-//                if (player.getScore() > 0) {
-//                    // Schedule the next decrement after 1 second
-//                    handler.postDelayed(this, 1000);
-//                } else {
-//                    // Count reached 0, you can take further action here
-//                    Intent game = new Intent(GameScreen.this, EndScreen.class);
-//                    startActivity(game);
-//                }
-//            }
-//        }, 1000); // Start the countdown after 1 second
-//    }
 
     @Override
     public void onScoreChanged(int newScore) {
-            playerScoreText = (TextView) findViewById(R.id.playerScore);
-            playerScoreText.setText("Score: " + Integer.toString(newScore));
+        playerScoreText = (TextView) findViewById(R.id.playerScore);
+        playerScoreText.setText("Score: " + Integer.toString(newScore));
+
+        if (newScore == 0) {
+            Intent game = new Intent(GameScreen.this, EndScreen.class);
+            startActivity(game);
+        }
     }
 
 
     // Handle key events to move the player
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        // TODO logic to move the player (remember to check collisions)
         Player player = Player.getPlayer();
-//        RelativeLayout gameLayout = findViewById(R.id.gameLayout);
-//        int pixel1;
-//        Drawable backgroundDrawable = gameLayout.getBackground();
-//        BitmapDrawable bitmapDrawable = (BitmapDrawable) backgroundDrawable;
-//        Bitmap backgroundBitmap = bitmapDrawable.getBitmap();
-//        int x = playerX;
-//        int y = playerY;
-//
-//        pixel1 = backgroundBitmap.getPixel(x, y);
-//        int red = Color.red(pixel1);
-//        int blue = Color.blue(pixel1);
-//        int green = Color.green(pixel1);
-//        Log.d("pixel", "color codes:" + Integer.toHexString(pixel1));
-        int newX = player.getPlayerX(), newY = player.getPlayerY();
+
+        int newX = player.getPlayerX();
+        int newY = player.getPlayerY();
         switch (keyCode) {
-            case KeyEvent.KEYCODE_DPAD_DOWN:
-                newX = playerX;
-                newY = playerY + moveSpeed;
-                break;
-            case KeyEvent.KEYCODE_DPAD_UP:
-                newX = playerX;
-                newY = playerY - moveSpeed;
-                break;
-            case KeyEvent.KEYCODE_DPAD_LEFT:
-                newX = playerX - moveSpeed;
-                newY = playerY;
-                break;
-            case KeyEvent.KEYCODE_DPAD_RIGHT:
-                newX = playerX + moveSpeed;
-                newY = playerY;
-                break;
+        case KeyEvent.KEYCODE_DPAD_DOWN:
+            newX = playerX;
+            newY = playerY + moveSpeed;
+            break;
+        case KeyEvent.KEYCODE_DPAD_UP:
+            newX = playerX;
+            newY = playerY - moveSpeed;
+            break;
+        case KeyEvent.KEYCODE_DPAD_LEFT:
+            newX = playerX - moveSpeed;
+            newY = playerY;
+            break;
+        case KeyEvent.KEYCODE_DPAD_RIGHT:
+            newX = playerX + moveSpeed;
+            newY = playerY;
+            break;
+        default:
+            break;
         }
 
         boolean legalMove = false;
@@ -181,11 +133,10 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver{
         }
 
         if (legalMove) {
-            player.playerMovement(playerX,playerY,screenSize); // frontend position is updated here
-            player.onKeyDown(keyCode,moveSpeed, event); // backend position is updated here
+            player.playerMovement(playerX, playerY, screenSize); // frontend position updated here
+            player.onKeyDown(keyCode, moveSpeed, event); // backend position is updated here
         }
-//        player.playerMovement(playerX,playerY,screenSize); // frontend position is updated here
-//        player.onKeyDown(keyCode,moveSpeed, event); // backend position is updated here
+
         playerX = player.getPlayerX();
         playerY = player.getPlayerY();
         if (playerX + moveSpeed >= screenSize.x - screenSize.x / 6) {
@@ -196,7 +147,7 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver{
 
         }
         playerView.updatePosition(playerX, playerY);
-//        Log.d("currLocation", "x:" + playerX + "y: " + playerY);
+        //Log.d("currLocation", "x:" + playerX + "y: " + playerY);
         // top left of yellow box is 320, 180
         // top of passage entrance 320, 420
         // bottom of passage entrance 320, 500

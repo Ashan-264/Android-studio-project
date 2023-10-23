@@ -63,7 +63,8 @@
 //        gameObject.setLeaderboard();
 //
 //        // Make Leaderboard
-//        PriorityQueue<Player> sortedLeaderboard = new PriorityQueue<Player>(gameObject.getLeaderboard());
+//        PriorityQueue<Player> sortedLeaderboard =
+//        new PriorityQueue<Player>(gameObject.getLeaderboard());
 //
 //        Player lbPlayer = sortedLeaderboard.poll();
 //        sortedLeaderboard.poll();
@@ -80,7 +81,8 @@
 //        gameObject.setLeaderboard();
 //
 //        // Make Leaderboard
-//        PriorityQueue<Player> sortedLeaderboard = new PriorityQueue<Player>(gameObject.getLeaderboard());
+//        PriorityQueue<Player> sortedLeaderboard =
+//        new PriorityQueue<Player>(gameObject.getLeaderboard());
 //
 //        Player lbPlayer = sortedLeaderboard.poll();
 //        sortedLeaderboard.poll();
