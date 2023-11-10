@@ -5,7 +5,7 @@ import android.graphics.Point;
 import java.util.Date;
 
 public interface Enemy {
-    public void setEnemy(String name, String spriteName, int health);
+    public void setEnemy(String name, int health);
 
 
     public String getName();

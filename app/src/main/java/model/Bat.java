@@ -36,7 +36,7 @@ import viewmodel.ScoreObserver;
 
         private Bat() {
             this.name = null;
-            this.sprite = null;
+            this.sprite = new Sprite("Bat");
             this.health = 0;
             this.score = maxScore;
             this.date = new Date();
@@ -55,9 +55,9 @@ import viewmodel.ScoreObserver;
             enemy = null;
         }
 
-        public void setEnemy(String name, String spriteName, int health) {
+        public void setEnemy(String name, int health) {
             this.name = name;
-            this.sprite = new Sprite(spriteName);
+            this.sprite = new Sprite("Bat");
             this.health = health;
             this.score = maxScore;
             this.date = new Date();
