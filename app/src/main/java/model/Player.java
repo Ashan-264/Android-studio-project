@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import viewmodel.ScoreObserver;
+import viewmodel.HealthObserver;
 
 public class Player implements Comparable<Player>, Subject {
 
@@ -17,6 +18,8 @@ public class Player implements Comparable<Player>, Subject {
     private String name;
     private Sprite sprite;
     private int health;
+
+    private int damage;
 
     private int score;
 
@@ -30,15 +33,18 @@ public class Player implements Comparable<Player>, Subject {
 
     private Handler handler = new Handler();
     private boolean isScoring = false;
+    private boolean healthUpdating = false;
 
     private boolean isOnLeaderboard = false;
 
     private List<ScoreObserver> scoreObservers = new ArrayList<>();
+    private List<HealthObserver> healthObservers = new ArrayList<>();
 
     private Player() {
         this.name = null;
         this.sprite = null;
         this.health = 0;
+        this.damage = 0;
         this.score = maxScore;
         this.date = new Date();
         this.isOnLeaderboard = false;
@@ -56,10 +62,11 @@ public class Player implements Comparable<Player>, Subject {
         player = null;
     }
 
-    public void setPlayer(String name, String spriteName, int health) {
+    public void setPlayer(String name, String spriteName, int health, int damage) {
         this.name = name;
         this.sprite = new Sprite(spriteName);
         this.health = health;
+        this.damage = damage;
         this.score = maxScore;
         this.date = new Date();
         this.isOnLeaderboard = false;
@@ -104,6 +111,11 @@ public class Player implements Comparable<Player>, Subject {
             score = 0;
         }
         this.notifyScoreObservers(score);
+    }
+
+    public void takeDamage() {
+        health -= damage;
+        this.notifyHealthObservers(health);
     }
 
     public void setPlayerX(int x) {
@@ -246,5 +258,40 @@ public class Player implements Comparable<Player>, Subject {
         if (playerMovement != null) {
             playerMovement.move(this, moveSpeed);
         }
+    }
+
+    // health updates
+    public void startHealthUpdates() {
+        if (!healthUpdating) {
+            healthUpdating = true;
+            handler.postDelayed(healthRunnable, 1000); // 1000 milliseconds = 1 second
+        }
+    }
+    private Runnable healthRunnable = new Runnable() {
+        @Override
+        public void run() {
+            handler.postDelayed(this, 1000); // Post this Runnable again after 1 second
+        }
+    };
+    public void stopHealthUpdates() {
+        if (healthUpdating) {
+            handler.removeCallbacks(healthRunnable);
+            healthUpdating = false;
+        }
+    }
+
+    public void notifyHealthObservers(int newHealth) {
+        for (HealthObserver observer : healthObservers) {
+            observer.onHealthChanged(newHealth);
+        }
+    }
+
+    public void addHealthObserver(HealthObserver observer) {
+        healthObservers.add(observer);
+    }
+
+    // Add a method to remove observers
+    public void removeHealthObserver(HealthObserver observer) {
+        healthObservers.remove(observer);
     }
 }

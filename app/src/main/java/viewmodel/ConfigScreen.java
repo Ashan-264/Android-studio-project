@@ -19,6 +19,8 @@ public class ConfigScreen extends AppCompatActivity {
     private String difficulty;
     private int health;
 
+    private int damage;
+
     private EditText nameInput;
 
 
@@ -58,17 +60,20 @@ public class ConfigScreen extends AppCompatActivity {
             difficulty = (String) selectedDifficlutyRadio.getText();
 
             if (difficulty.equals("Hard")) {
-                health = 10;
-            } else if (difficulty.equals("Medium")) {
                 health = 20;
+                damage = 4;
+            } else if (difficulty.equals("Medium")) {
+                health = 25;
+                damage = 2;
             } else if (difficulty.equals("Easy")) {
                 health = 30;
+                damage = 1;
             }
             if (validName && health != 0 && spriteRadioID != -1) {
 
                 Player player = Player.getPlayer();
 
-                player.setPlayer(name, sprite, health);
+                player.setPlayer(name, sprite, health, damage);
 
                 GameObject gameObject = GameObject.getGameObject();
 

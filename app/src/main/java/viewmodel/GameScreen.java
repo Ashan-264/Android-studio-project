@@ -16,12 +16,13 @@ import model.Enemy;
 import model.GameObject;
 import model.Player;
 
-public class GameScreen extends AppCompatActivity implements ScoreObserver {
+public class GameScreen extends AppCompatActivity implements ScoreObserver, HealthObserver {
 
     private Handler handler = new Handler();
     private Runnable countdownRunnable;
 
     private TextView playerScoreText;
+    private TextView playerHealthText;
 
     private PlayerView playerView;
 
@@ -64,8 +65,9 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver {
         playerNameText.setText(player.getName());
 
         // Display player Health
-        TextView playerHealthText = (TextView) findViewById(R.id.playerHealth);
+        playerHealthText = (TextView) findViewById(R.id.playerHealth);
         playerHealthText.setText("Health: " + Integer.toString(player.getHealth()));
+        player.startHealthUpdates();
 
         // Display player sprite
         ImageView playerImage = (ImageView) findViewById(R.id.playerImage);
@@ -83,8 +85,8 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver {
         screenSize = new Point();
         display.getSize(screenSize);
 
-        playerX = 520;
-        playerY = 500;
+        playerX = 760;
+        playerY = 460;
         //AShan
         // Create character
         gameLayout = findViewById(R.id.gameLayout);
@@ -92,8 +94,8 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver {
         gameLayout.addView(playerView);
 
         //Enemy
-        enemyX = 620;
-        enemyY = 600;
+        enemyX = 560;
+        enemyY = 1460;
         //AShan
         // Create enemy
         gameLayout = findViewById(R.id.gameLayout);
@@ -107,6 +109,19 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver {
         playerScoreText.setText("Score: " + Integer.toString(newScore));
 
         if (newScore == 0) {
+            Intent game = new Intent(GameScreen.this, EndScreen.class);
+            startActivity(game);
+        }
+    }
+
+    public void onHealthChanged(int newHealth) {
+        playerHealthText = (TextView) findViewById(R.id.playerHealth);
+        playerHealthText.setText("Health: " + Integer.toString(newHealth));
+
+        // TO DO
+        // Change this to Archer's class once he adds it
+        // This is when health hits 0, should go to EndScreenLose
+        if (newHealth == 0) {
             Intent game = new Intent(GameScreen.this, EndScreen.class);
             startActivity(game);
         }
@@ -160,6 +175,12 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver {
 
         playerX = player.getPlayerX();
         playerY = player.getPlayerY();
+
+        // enemy collision check
+        if (Math.abs(playerX - enemyX) < 100 && Math.abs(playerY - enemyY) < 60) {
+            player.takeDamage();
+        }
+
         if (playerX + moveSpeed >= screenSize.x - screenSize.x / 6) {
             if (playerY >= 1420) {
                 Intent game = new Intent(this, GameScreen2.class);

@@ -11,7 +11,7 @@ public class PlayerTest {
     @Before
     public void initialization() {
         player = Player.getPlayer();
-        player.setPlayer("George Burdell", "Burdell", 3);
+        player.setPlayer("George Burdell", "Burdell", 3, 0);
     }
 
     @Test

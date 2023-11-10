@@ -19,7 +19,7 @@ public class GameObjectTest {
     @Test
     public void testPlayer() {
         Player player = Player.getPlayer();
-        player.setPlayer("Test name", "Test Sprite", 1);
+        player.setPlayer("Test name", "Test Sprite", 1, 0);
         Player newPlayer = player.copy();
 
         String testDifficulty = "Hard";
@@ -35,7 +35,7 @@ public class GameObjectTest {
     @Test
     public void testDifficulty() {
         Player player = Player.getPlayer();
-        player.setPlayer("Test name", "Test Sprite", 1);
+        player.setPlayer("Test name", "Test Sprite", 1, 0);
         Player newPlayer = player.copy();
         String testDifficulty = "Hard";
 

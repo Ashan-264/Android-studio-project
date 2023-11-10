@@ -41,8 +41,8 @@ public class EnemyView extends RelativeLayout {
         }
 
         // Set the initial size of the ImageView directly (in pixels)
-        int imageWidth = screenWidth / 10; // Set your desired width in pixels
-        int imageHeight = screenHeight / 10; // Set your desired height in pixels
+        int imageWidth = screenWidth / 15; // Set your desired width in pixels
+        int imageHeight = screenHeight / 15; // Set your desired height in pixels
         RelativeLayout.LayoutParams layoutParams =
                 new RelativeLayout.LayoutParams(imageWidth, imageHeight);
 
