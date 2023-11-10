@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import model.Enemy;
 import model.GameObject;
 import model.Player;
 
@@ -33,6 +34,14 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver {
 
     private Point  screenSize;
 
+
+    //Enemy variables
+    private EnemyView enemyView;
+    private int enemyX;
+
+    private int enemyY;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +50,9 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver {
         GameObject gameObject = GameObject.getGameObject();
         Player player = Player.getPlayer();
         Player.getPlayer().addScoreObserver(this);
+
+        //Enemy
+        Enemy enemy = Enemy.getEnemy();
 
 
         // Display difficulty
@@ -78,6 +90,15 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver {
         gameLayout = findViewById(R.id.gameLayout);
         playerView = new PlayerView(this, playerX, playerY, spriteName);
         gameLayout.addView(playerView);
+
+        //Enemy
+        enemyX = 620;
+        enemyY = 600;
+        //AShan
+        // Create enemy
+        gameLayout = findViewById(R.id.gameLayout);
+        enemyView = new EnemyView(this, enemyX, enemyY, "Bat");
+        gameLayout.addView(enemyView);
     }
 
     @Override
