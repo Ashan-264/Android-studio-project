@@ -51,8 +51,9 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver {
         Player player = Player.getPlayer();
         Player.getPlayer().addScoreObserver(this);
 
-        //Enemy
-        Enemy enemy = Enemy.getEnemy();
+        //create Bat for map 1 factory method
+        Map1Bat map1Bat = new Map1Bat();
+        Enemy enemy = map1Bat.createEnemy();
 
 
         // Display difficulty
@@ -189,6 +190,8 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver {
         // You may need to add logic here to stop the player's movement.
         return true;
     }
+
+
 
 }
     // Handle key events to move the player

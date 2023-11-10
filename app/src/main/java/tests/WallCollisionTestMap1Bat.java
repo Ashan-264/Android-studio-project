@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import model.Player;
 
-public class WallCollisionTestMap1 {
+public class WallCollisionTestMap1Bat {
 
     private Player player = Player.getPlayer();
     @Before
