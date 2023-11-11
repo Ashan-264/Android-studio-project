@@ -28,21 +28,30 @@ public class EnemyView extends RelativeLayout {
         display.getSize(size);
         screenWidth = size.x;
         screenHeight = size.y;
-
+        int imageWidth = 0;
+        int imageHeight = 0;
         playerImage = new ImageView(context);
         if (spriteName.equals("Bat")) {
             playerImage.setImageResource(R.drawable.bat);
+            imageWidth = screenWidth / 15;
+            imageHeight = screenHeight / 15;
         } else if (spriteName.equals("Ghost")) {
             playerImage.setImageResource(R.drawable.ghost);
+            imageWidth = screenWidth / 10;
+            imageHeight = screenHeight / 10;
         } else if (spriteName.equals("Mage")) {
             playerImage.setImageResource(R.drawable.mage);
+            imageWidth = screenWidth / 15;
+            imageHeight = screenHeight / 15;
         } else if (spriteName.equals("Knight")) {
             playerImage.setImageResource(R.drawable.knight);
+            imageWidth = screenWidth / 10;
+            imageHeight = screenHeight / 10;
         }
 
         // Set the initial size of the ImageView directly (in pixels)
-        int imageWidth = screenWidth / 15; // Set your desired width in pixels
-        int imageHeight = screenHeight / 15; // Set your desired height in pixels
+        // int imageWidth = screenWidth / 15; // Set your desired width in pixels
+        // int imageHeight = screenHeight / 15; // Set your desired height in pixels
         RelativeLayout.LayoutParams layoutParams =
                 new RelativeLayout.LayoutParams(imageWidth, imageHeight);
 
