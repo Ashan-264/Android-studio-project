@@ -51,6 +51,7 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
         GameObject gameObject = GameObject.getGameObject();
         Player player = Player.getPlayer();
         Player.getPlayer().addScoreObserver(this);
+        Player.getPlayer().addHealthObserver(this);
 
         //create Bat for map 1 factory method
         Map1Bat map1Bat = new Map1Bat();
