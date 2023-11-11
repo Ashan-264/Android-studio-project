@@ -32,8 +32,7 @@ import viewmodel.ScoreObserver;
 
         private boolean isOnLeaderboard = false;
 
-        private List<ScoreObserver> scoreObservers = new ArrayList<>();
-
+4
         private Bat() {
             this.name = null;
             this.sprite = new Sprite("Bat");
