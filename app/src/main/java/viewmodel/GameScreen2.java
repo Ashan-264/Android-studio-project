@@ -15,12 +15,15 @@ import android.widget.TextView;
 import model.GameObject;
 import model.Player;
 
-public class GameScreen2 extends AppCompatActivity implements ScoreObserver {
+public class GameScreen2 extends AppCompatActivity implements ScoreObserver, HealthObserver {
 
     private Handler handler = new Handler();
+
     private Runnable countdownRunnable;
 
     private TextView playerScoreText;
+
+    private TextView playerHealthText;
 
     private PlayerView playerView;
 
@@ -34,6 +37,13 @@ public class GameScreen2 extends AppCompatActivity implements ScoreObserver {
 
     private Point screenSize;
 
+    private EnemyView ghostView;
+    private EnemyView batView;
+    private int ghostX;
+    private int ghostY;
+    private int batX;
+    private int batY;
+
 
 
     @Override
@@ -44,6 +54,7 @@ public class GameScreen2 extends AppCompatActivity implements ScoreObserver {
         GameObject gameObject = GameObject.getGameObject();
         Player player = gameObject.getPlayer();
         Player.getPlayer().addScoreObserver(this);
+        Player.getPlayer().addHealthObserver(this);
 
         // Display difficulty
         TextView difficultyText = (TextView) findViewById(R.id.difficulty);
@@ -54,7 +65,7 @@ public class GameScreen2 extends AppCompatActivity implements ScoreObserver {
         playerNameText.setText(player.getName());
 
         // Display player Health
-        TextView playerHealthText = (TextView) findViewById(R.id.playerHealth);
+        playerHealthText = (TextView) findViewById(R.id.playerHealth);
         playerHealthText.setText("Health: " + Integer.toString(player.getHealth()));
 
         // Display player sprite
@@ -77,10 +88,23 @@ public class GameScreen2 extends AppCompatActivity implements ScoreObserver {
         gameLayout.addView(playerView);
 
 
-
         // Display score
         playerScoreText = (TextView) findViewById(R.id.playerScore);
         playerScoreText.setText("Score: " + Integer.toString(player.getScore()));
+
+        // Enemy 1: ghost
+        ghostX = 530;
+        ghostY = 740;
+
+        // Enemy 2: bat
+        batX = 690;
+        batY = 1620;
+
+        // Create enemy
+        ghostView = new EnemyView(this, ghostX, ghostY, "Ghost");
+        gameLayout.addView(ghostView);
+        batView = new EnemyView(this, batX, batY, "Bat");
+        gameLayout.addView(batView);
 
     }
 
@@ -96,6 +120,20 @@ public class GameScreen2 extends AppCompatActivity implements ScoreObserver {
             startActivity(game);
         }
     }
+
+    public void onHealthChanged(int newHealth) {
+        playerHealthText = (TextView) findViewById(R.id.playerHealth);
+        playerHealthText.setText("Health: " + Integer.toString(newHealth));
+
+        // TO DO
+        // Change this to Archer's class once he adds it
+        // This is when health hits 0, should go to EndScreenLose
+        if (newHealth == 0) {
+            Intent game = new Intent(GameScreen2.this, EndScreen.class);
+            startActivity(game);
+        }
+    }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO logic to move the player (remember to check collisions)
@@ -145,6 +183,17 @@ public class GameScreen2 extends AppCompatActivity implements ScoreObserver {
 
         playerX = player.getPlayerX();
         playerY = player.getPlayerY();
+
+        // ghost collision check
+        if (Math.abs(playerX - ghostX) < 100 && Math.abs(playerY - ghostY) < 60) {
+            player.takeDamage();
+        }
+
+        // bat collision check
+        if (Math.abs(playerX - batX) < 100 && Math.abs(playerY - batY) < 60) {
+            player.takeDamage();
+        }
+
         if (playerX + moveSpeed >= screenSize.x - screenSize.x / 8) {
             if (playerY <= 340) {
                 Intent game = new Intent(this, GameScreen3.class);

@@ -37,10 +37,12 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
 
 
     //Enemy variables
-    private EnemyView enemyView;
-    private int enemyX;
-
-    private int enemyY;
+    private EnemyView batView;
+    private EnemyView mageView;
+    private int batX;
+    private int batY;
+    private int mageX;
+    private int mageY;
 
 
     @Override
@@ -95,14 +97,21 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
         playerView = new PlayerView(this, playerX, playerY, spriteName);
         gameLayout.addView(playerView);
 
-        //Enemy
-        enemyX = 560;
-        enemyY = 1460;
+        // Enemy 1: bat
+        batX = 560;
+        batY = 1460;
+
+        // Enemy 2: mage
+        mageX = 360;
+        mageY = 340;
+
         //AShan
         // Create enemy
         gameLayout = findViewById(R.id.gameLayout);
-        enemyView = new EnemyView(this, enemyX, enemyY, "Bat");
-        gameLayout.addView(enemyView);
+        batView = new EnemyView(this, batX, batY, "Bat");
+        gameLayout.addView(batView);
+        mageView = new EnemyView(this, mageX, mageY, "Mage");
+        gameLayout.addView(mageView);
     }
 
     @Override
@@ -178,8 +187,13 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
         playerX = player.getPlayerX();
         playerY = player.getPlayerY();
 
-        // enemy collision check
-        if (Math.abs(playerX - enemyX) < 100 && Math.abs(playerY - enemyY) < 60) {
+        // bat collision check
+        if (Math.abs(playerX - batX) < 100 && Math.abs(playerY - batY) < 60) {
+            player.takeDamage();
+        }
+
+        // mage collision check
+        if (Math.abs(playerX - mageX) < 100 && Math.abs(playerY - mageY) < 60) {
             player.takeDamage();
         }
 
