@@ -4,9 +4,9 @@ package model;
 import android.graphics.Point;
 import android.os.Handler;
 
-public class Mace implements Enemy {
+public class Mage implements Enemy {
 
-    private static Mace enemy;
+    private static Mage enemy;
     private Sprite sprite;
     private int enemyX;
     private int enemyY;
@@ -14,12 +14,12 @@ public class Mace implements Enemy {
     private static int maxScore = 999;
     private PlayerMovement enemyMovement;
     private Handler handler = new Handler();
-    private Mace() {
+    private Mage() {
         this.sprite = null;
     }
-    public static Mace getEnemy() {
+    public static Mage getEnemy() {
         if (enemy == null) {
-            enemy = new Mace();
+            enemy = new Mage();
         }
         return enemy;
     }
@@ -29,10 +29,10 @@ public class Mace implements Enemy {
     }
 
     public void setEnemy() {
-        this.sprite = new Sprite("Mace");
+        this.sprite = new Sprite("Mage");
     }
-    public Mace copy() {
-        Mace returnEnemy = new Mace();
+    public Mage copy() {
+        Mage returnEnemy = new Mage();
         returnEnemy.sprite = this.sprite;
         return returnEnemy;
     }

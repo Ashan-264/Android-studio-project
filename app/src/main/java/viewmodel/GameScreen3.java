@@ -15,15 +15,14 @@ import android.widget.TextView;
 import model.GameObject;
 import model.Player;
 
-public class GameScreen3 extends AppCompatActivity implements ScoreObserver {
+public class GameScreen3 extends AppCompatActivity implements ScoreObserver, HealthObserver {
 
     private Handler handler = new Handler();
     private Runnable countdownRunnable;
 
     private TextView playerScoreText;
-
+    private TextView playerHealthText;
     private PlayerView playerView;
-
 
     private int playerY = 1300;
     private int playerX = 200;  //Ashan
@@ -34,6 +33,13 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver {
 
     private Point screenSize;
 
+    private EnemyView mageView;
+    private EnemyView knightView;
+    private int mageX;
+    private int mageY;
+    private int knightX;
+    private int knightY;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +48,7 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver {
         GameObject gameObject = GameObject.getGameObject();
         Player player = gameObject.getPlayer();
         Player.getPlayer().addScoreObserver(this);
+        Player.getPlayer().addHealthObserver(this);
 
         // Display difficulty
         TextView difficultyText = (TextView) findViewById(R.id.difficulty);
@@ -52,7 +59,7 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver {
         playerNameText.setText(player.getName());
 
         // Display player Health
-        TextView playerHealthText = (TextView) findViewById(R.id.playerHealth);
+        playerHealthText = (TextView) findViewById(R.id.playerHealth);
         playerHealthText.setText("Health: " + Integer.toString(player.getHealth()));
 
         // Display player sprite
@@ -74,6 +81,20 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver {
         playerView = new PlayerView(this, playerX, playerY, spriteName);
         gameLayout.addView(playerView);
 
+        // Enemy 1: mage
+        mageX = 600;
+        mageY = 660;
+
+        // Enemy 2: knight
+        knightX = 880;
+        knightY = 1540;
+
+        // Create enemy
+        mageView = new EnemyView(this, mageX, mageY, "Mage");
+        gameLayout.addView(mageView);
+        knightView = new EnemyView(this, knightX, knightY, "Knight");
+        gameLayout.addView(knightView);
+
 
 
 
@@ -91,6 +112,19 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver {
         playerScoreText.setText("Score: " + Integer.toString(newScore));
 
         if (newScore == 0) {
+            Intent game = new Intent(GameScreen3.this, EndScreen.class);
+            startActivity(game);
+        }
+    }
+
+    public void onHealthChanged(int newHealth) {
+        playerHealthText = (TextView) findViewById(R.id.playerHealth);
+        playerHealthText.setText("Health: " + Integer.toString(newHealth));
+
+        // TO DO
+        // Change this to Archer's class once he adds it
+        // This is when health hits 0, should go to EndScreenLose
+        if (newHealth == 0) {
             Intent game = new Intent(GameScreen3.this, EndScreen.class);
             startActivity(game);
         }
@@ -142,6 +176,17 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver {
 
         playerX = player.getPlayerX();
         playerY = player.getPlayerY();
+
+        // mage collision check
+        if (Math.abs(playerX - mageX) < 100 && Math.abs(playerY - mageY) < 60) {
+            player.takeDamage();
+        }
+
+        // knight collision check
+        if (Math.abs(playerX - knightX) < 100 && Math.abs(playerY - knightY) < 60) {
+            player.takeDamage();
+        }
+
         if (playerX - moveSpeed <= 0) {
             if (playerY >= 1420) {
                 Intent game = new Intent(GameScreen3.this, EndScreen.class);
