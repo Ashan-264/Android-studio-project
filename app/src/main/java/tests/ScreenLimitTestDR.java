@@ -11,7 +11,7 @@ public class ScreenLimitTestDR {
     private Player player = Player.getPlayer();
     @Before
     public void initialization() {
-        player.setPlayer("George Burdell", "Burdell", 3);
+        player.setPlayer("George Burdell", "Burdell", 3, 0);
         player.setPlayerY(1780);
         player.setPlayerX(970);
     }

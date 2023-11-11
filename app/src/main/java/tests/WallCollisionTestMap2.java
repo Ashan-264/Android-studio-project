@@ -11,7 +11,7 @@ public class WallCollisionTestMap2 {
     private Player player = Player.getPlayer();
     @Before
     public void initialization() {
-        player.setPlayer("George Burdell", "Burdell", 3);
+        player.setPlayer("George Burdell", "Burdell", 3, 0);
         player.setPlayerY(740);
         player.setPlayerX(610);
     }
