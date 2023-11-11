@@ -29,8 +29,8 @@ import android.os.Handler;
             enemy = null;
         }
 
-        public void setEnemy(String spriteName) {
-            this.sprite = new Sprite(spriteName);
+        public void setEnemy() {
+            this.sprite = new Sprite("Bat");
         }
         public Bat copy() {
             Bat returnEnemy = new Bat();
