@@ -1,10 +1,8 @@
 
 package model;
 
-        import android.graphics.Point;
-        import android.os.Handler;
-
-
+import android.graphics.Point;
+import android.os.Handler;
 
 public class Knight implements Enemy {
 

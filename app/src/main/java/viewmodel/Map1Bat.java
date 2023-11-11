@@ -6,7 +6,7 @@ import model.Maps;
 
 public class Map1Bat extends Maps {
 
-    public Map1Bat(){};
+    public Map1Bat() { };
     @Override
     public Enemy createEnemy() {
         Bat bat = Bat.getEnemy();
