@@ -12,7 +12,7 @@ import java.util.List;
 import viewmodel.ScoreObserver;
 import viewmodel.HealthObserver;
 
-public class Player implements Comparable<Player>, Subject {
+public class Player implements Comparable<Player>, Subject, Subject2 {
 
     private static Player player;
     private String name;
@@ -280,17 +280,20 @@ public class Player implements Comparable<Player>, Subject {
         }
     }
 
+    @Override
     public void notifyHealthObservers(int newHealth) {
         for (HealthObserver observer : healthObservers) {
             observer.onHealthChanged(newHealth);
         }
     }
 
+    @Override
     public void addHealthObserver(HealthObserver observer) {
         healthObservers.add(observer);
     }
 
     // Add a method to remove observers
+    @Override
     public void removeHealthObserver(HealthObserver observer) {
         healthObservers.remove(observer);
     }
