@@ -2,8 +2,6 @@ package model;
 
 import android.graphics.Point;
 
-import java.util.Date;
-
 public interface Enemy {
     public void setEnemy();
 
@@ -19,6 +17,6 @@ public interface Enemy {
 
     public int getEnemyY();
 
-    public void enemyMovement(int initialX, int initialY, Point screenSize) ;
+    public void enemyMovement(int initialX, int initialY, Point screenSize);
 
 }

@@ -35,9 +35,9 @@ public class EnemyView extends RelativeLayout {
         } else if (spriteName.equals("Ghost")) {
             playerImage.setImageResource(R.drawable.ghost);
         } else if (spriteName.equals("Mage")) {
-            playerImage.setImageResource(R.drawable.mage); }
-            else if (spriteName.equals("Knight")) {
-                playerImage.setImageResource(R.drawable.knight);
+            playerImage.setImageResource(R.drawable.mage);
+        } else if (spriteName.equals("Knight")) {
+            playerImage.setImageResource(R.drawable.knight);
         }
 
         // Set the initial size of the ImageView directly (in pixels)
