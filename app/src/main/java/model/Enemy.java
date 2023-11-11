@@ -5,19 +5,10 @@ import android.graphics.Point;
 import java.util.Date;
 
 public interface Enemy {
-    public void setEnemy(String name, String spriteName, int health);
+    public void setEnemy( String spriteName);
 
-
-    public String getName();
-
-    public int getHealth();
 
     public Sprite getSprite();
-
-    public int getScore();
-
-    public Date getDate();
-
 
 
     public void setEnemyX(int x);
@@ -30,11 +21,4 @@ public interface Enemy {
 
     public void enemyMovement(int initialX, int initialY, Point screenSize) ;
 
-    public void moveDown(int moveSpeed) ;
-
-    public void moveUp(int moveSpeed) ;
-
-    public void moveLeft(int moveSpeed) ;
-
-    public void moveRight(int moveSpeed);
 }
