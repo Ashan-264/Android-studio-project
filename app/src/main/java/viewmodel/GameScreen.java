@@ -16,7 +16,7 @@ import model.Enemy;
 import model.GameObject;
 import model.Player;
 
-public class GameScreen extends AppCompatActivity implements ScoreObserver, HealthObserver {
+public class GameScreen extends AppCompatActivity implements ScoreObserver, HealthObserver{
 
     private Handler handler = new Handler();
     private Runnable countdownRunnable;
@@ -110,8 +110,10 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
         gameLayout = findViewById(R.id.gameLayout);
         batView = new EnemyView(this, batX, batY, "Bat");
         gameLayout.addView(batView);
+        batView.startMoving();
         mageView = new EnemyView(this, mageX, mageY, "Mage");
         gameLayout.addView(mageView);
+        mageView.startMoving();
     }
 
     @Override
@@ -132,7 +134,7 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
         // TO DO
         // Change this to Archer's class once he adds it
         // This is when health hits 0, should go to EndScreenLose
-        if (newHealth == 0) {
+        if (newHealth <= 0) {
             Intent game = new Intent(GameScreen.this, EndScreen.class);
             startActivity(game);
         }
