@@ -1,6 +1,8 @@
 package tests;
 import static org.junit.Assert.assertEquals;
 
+import android.widget.TextView;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,9 +13,10 @@ public class ScreenLimitTestUL {
     private Player player = Player.getPlayer();
     @Before
     public void initialization() {
-        player.setPlayer("George Burdell", "Burdell", 3, 0);
+        player.setPlayer("George Burdell", "Wizard", 3, 0);
         player.setPlayerY(-100);
         player.setPlayerX(10);
+
     }
 
     @Test
