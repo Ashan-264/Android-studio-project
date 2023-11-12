@@ -113,6 +113,10 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
         this.notifyScoreObservers(score);
     }
 
+    public void setScore(int x) {
+        score = x;
+    }
+
     public void takeDamage() {
         health -= damage;
         this.notifyHealthObservers(health);

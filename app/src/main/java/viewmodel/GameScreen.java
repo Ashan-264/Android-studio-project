@@ -122,7 +122,7 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
         playerScoreText.setText("Score: " + Integer.toString(newScore));
 
         if (newScore == 0) {
-            Intent game = new Intent(GameScreen.this, EndScreen.class);
+            Intent game = new Intent(GameScreen.this, EndScreenLose.class);
             startActivity(game);
         }
     }
@@ -130,14 +130,17 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
     public void onHealthChanged(int newHealth) {
         playerHealthText = (TextView) findViewById(R.id.playerHealth);
         playerHealthText.setText("Health: " + Integer.toString(newHealth));
+        Player player = Player.getPlayer();
 
         // TO DO
         // Change this to Archer's class once he adds it
         // This is when health hits 0, should go to EndScreenLose
         if (newHealth <= 0) {
-            Intent game = new Intent(GameScreen.this, EndScreen.class);
+            player.subScore(1000);
+            Intent game = new Intent(GameScreen.this, EndScreenLose.class);
             startActivity(game);
         }
+
     }
 
 
