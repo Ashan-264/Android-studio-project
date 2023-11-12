@@ -113,7 +113,7 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
         playerScoreText = (TextView) findViewById(R.id.playerScore);
         playerScoreText.setText("Score: " + Integer.toString(newScore));
 
-        if (newScore == 0) {
+        if (newScore <= 0) {
             Intent game = new Intent(GameScreen3.this, EndScreen.class);
             startActivity(game);
         }

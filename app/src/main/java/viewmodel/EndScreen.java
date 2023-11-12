@@ -80,6 +80,11 @@ public class EndScreen extends AppCompatActivity {
         TextView scoreText = (TextView) findViewById(R.id.scoreText);
         scoreText.setText("Score: " + Integer.toString(player.getScore()));
 
+        TextView gameOver = (TextView) findViewById(R.id.gameOver);
+        if (player.getHealth() <= 0 || player.getScore() <= 0) {
+            gameOver.setText("You Lose");
+        }
+
         Button restartBtn =  findViewById(R.id.restartButton);
         restartBtn.setOnClickListener(v -> {
             Intent game = new Intent(this, MainActivity.class);
