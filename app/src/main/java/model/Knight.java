@@ -8,6 +8,10 @@ public class Knight implements Enemy {
 
     private static Knight enemy;
     private Sprite sprite;
+
+    private int baseDamage = 1;
+
+    private int difficulty = 1; //difficulty multiplier (2 for medium 4 for hard)
     private int enemyX;
     private int enemyY;
     private Point screenSize;
@@ -54,6 +58,7 @@ public class Knight implements Enemy {
 
     public boolean isCollide(Player player) {
         if (player.getPlayerX() == enemyX && player.getPlayerY() == enemyY) {
+            player.setHealth(player.getHealth() - baseDamage * difficulty);
             return true;
         }
         else {

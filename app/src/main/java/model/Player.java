@@ -84,6 +84,10 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
         return returnPlayer;
     }
 
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
     public String getName() {
         return name;
     }
