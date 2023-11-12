@@ -59,6 +59,10 @@ public class Bat implements Enemy {
         this.screenSize = screenSize;
     }
 
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
     public boolean isCollide(Player player) {
         if (player.getPlayerX() == enemyX && player.getPlayerY() == enemyY) {
             player.setHealth(player.getHealth() - baseDamage * difficulty);
