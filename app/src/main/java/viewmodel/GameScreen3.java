@@ -83,16 +83,18 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
 
         // Enemy 1: mage
         mageX = 600;
-        mageY = 660;
+        mageY = 460;
 
         // Enemy 2: knight
-        knightX = 880;
-        knightY = 1540;
+        knightX = 780;
+        knightY = 1380;
 
         // Create enemy
         mageView = new EnemyView(this, mageX, mageY, "Mage");
+        mageView.startMoving();
         gameLayout.addView(mageView);
         knightView = new EnemyView(this, knightX, knightY, "Knight");
+        knightView.startMoving();
         gameLayout.addView(knightView);
 
 

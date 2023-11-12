@@ -93,17 +93,19 @@ public class GameScreen2 extends AppCompatActivity implements ScoreObserver, Hea
         playerScoreText.setText("Score: " + Integer.toString(player.getScore()));
 
         // Enemy 1: ghost
-        ghostX = 530;
+        ghostX = 370;
         ghostY = 740;
 
         // Enemy 2: bat
         batX = 690;
-        batY = 1620;
+        batY = 1520;
 
         // Create enemy
         ghostView = new EnemyView(this, ghostX, ghostY, "Ghost");
+        ghostView.startMoving();
         gameLayout.addView(ghostView);
         batView = new EnemyView(this, batX, batY, "Bat");
+        batView.startMoving();
         gameLayout.addView(batView);
 
     }
