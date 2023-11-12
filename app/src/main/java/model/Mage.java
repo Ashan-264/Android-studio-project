@@ -56,6 +56,10 @@ public class Mage implements Enemy {
         return enemyY;
     }
 
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
     public boolean isCollide(Player player) {
         if (player.getPlayerX() == enemyX && player.getPlayerY() == enemyY) {
             player.setHealth(player.getHealth() - baseDamage * difficulty);
