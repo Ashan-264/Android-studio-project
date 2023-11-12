@@ -13,7 +13,7 @@ public class Ghost implements Enemy {
     private Point screenSize;
     private static int maxScore = 999;
     private PlayerMovement enemyMovement;
-    private Handler handler = new Handler();
+    private Handler handler;
     private Ghost() {
         this.sprite = null;
     }
@@ -50,6 +50,15 @@ public class Ghost implements Enemy {
     }
     public int getEnemyY() {
         return enemyY;
+    }
+
+    public boolean isCollide(Player player) {
+        if (player.getPlayerX() == enemyX && player.getPlayerY() == enemyY) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     public void enemyMovement(int initialX, int initialY, Point screenSize) {
         enemyX = initialX;

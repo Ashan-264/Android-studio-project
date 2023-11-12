@@ -12,7 +12,7 @@ public class Bat implements Enemy {
     private Point screenSize;
     private static int maxScore = 999;
     private PlayerMovement enemyMovement;
-    private Handler handler = new Handler();
+    private Handler handler;
     private Bat() {
         this.sprite = null;
     }
@@ -54,6 +54,15 @@ public class Bat implements Enemy {
         enemyX = initialX;
         enemyY = initialY;
         this.screenSize = screenSize;
+    }
+
+    public boolean isCollide(Player player) {
+        if (player.getPlayerX() == enemyX && player.getPlayerY() == enemyY) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     public void moveLeft(int moveSpeed) {
         enemyX -= moveSpeed;
