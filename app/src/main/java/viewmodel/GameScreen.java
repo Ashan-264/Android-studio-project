@@ -16,7 +16,7 @@ import model.Enemy;
 import model.GameObject;
 import model.Player;
 
-public class GameScreen extends AppCompatActivity implements ScoreObserver, HealthObserver{
+public class GameScreen extends AppCompatActivity implements ScoreObserver, HealthObserver {
 
     private Handler handler = new Handler();
     private Runnable countdownRunnable;
@@ -121,7 +121,7 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
         playerScoreText = (TextView) findViewById(R.id.playerScore);
         playerScoreText.setText("Score: " + Integer.toString(newScore));
 
-        if (newScore == 0) {
+        if (newScore <= 0) {
             Intent game = new Intent(GameScreen.this, EndScreen.class);
             startActivity(game);
         }

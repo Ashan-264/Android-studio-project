@@ -64,8 +64,7 @@ public class Knight implements Enemy {
         if (player.getPlayerX() == enemyX && player.getPlayerY() == enemyY) {
             player.setHealth(player.getHealth() - baseDamage * difficulty);
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }

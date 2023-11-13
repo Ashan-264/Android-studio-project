@@ -9,8 +9,7 @@ import model.Bat;
 import model.Ghost;
 import model.Knight;
 import model.Mage;
-import viewmodel.EnemyView;
-import viewmodel.PlayerView;
+
 
 public class Sprint4CollisionMovementTest {
 

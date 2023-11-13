@@ -1,8 +1,6 @@
 package tests;
 import static org.junit.Assert.assertEquals;
 
-import android.widget.TextView;
-
 import org.junit.Before;
 import org.junit.Test;
 
