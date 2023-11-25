@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Point;
 import android.os.Handler;
 import android.view.Display;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -140,6 +141,18 @@ public class EnemyView extends RelativeLayout {
         }
 
         updatePosition(x, y);
+    }
+
+    public void stopMovingAndRemove() {
+        if (isMoving) {
+            handler.removeCallbacks(enemyRunnable);
+            isMoving = false;
+            // Get the parent view and remove this EnemyView
+            ViewGroup parentView = (ViewGroup) getParent();
+            if (parentView != null) {
+                parentView.removeView(this);
+            }
+        }
     }
 }
 

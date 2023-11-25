@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import viewmodel.EnemyView;
+import viewmodel.GameScreen;
 import viewmodel.ScoreObserver;
 import viewmodel.HealthObserver;
 
@@ -302,3 +304,5 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
         healthObservers.remove(observer);
     }
 }
+
+
