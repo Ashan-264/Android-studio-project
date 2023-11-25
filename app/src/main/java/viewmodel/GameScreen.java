@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Display;
 import android.view.KeyEvent;
 import android.widget.ImageView;
@@ -165,8 +166,34 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
             newX = playerX + moveSpeed;
             newY = playerY;
             break;
-        default:
-            break;
+
+
+           //Ashan's change - key to remove bat 
+
+
+            // Player attacks
+            case KeyEvent.KEYCODE_1:
+                // Call the player's attack method
+
+                // Check for collision with the bat
+                if (Math.abs(playerX - batX) < 400 && Math.abs(playerY - batY) < 400) {
+                    // Remove the bat from the screen
+                    Log.d("Enemy moving", "It works");
+                    batView.stopMovingAndRemove();
+                    batX = 0;
+                    batY=0;
+                }
+
+                if (Math.abs(playerX - mageX) < 400 && Math.abs(playerY - mageY) < 400) {
+                    // Remove the bat from the screen
+                    Log.d("Enemy moving", "It works");
+                    mageView.stopMovingAndRemove();
+                    mageX = 0;
+                    mageY=0;
+             }
+                break;
+            default:
+                break;
         }
 
         boolean legalMove = false;
@@ -229,7 +256,12 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
         return true;
     }
 
+    public void removeEnemy(EnemyView enemyview) {
+        // Remove the bat view from the layout
+        gameLayout.removeView(enemyview);
+    }
 
 
-}
-    // Handle key events to move the player
+
+    }
+// Handle key events to move the player
