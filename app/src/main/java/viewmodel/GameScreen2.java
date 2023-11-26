@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Display;
 import android.view.KeyEvent;
 import android.widget.ImageView;
@@ -160,6 +161,17 @@ public class GameScreen2 extends AppCompatActivity implements ScoreObserver, Hea
             newX = playerX + moveSpeed;
             newY = playerY;
             break;
+            //Ashan's change - key to remove bat
+            case KeyEvent.KEYCODE_1:
+                // Check for collision with the enemy
+                if (Math.abs(playerX - ghostX) < 400 && Math.abs(playerY - ghostY) < 400) {
+                    // Remove the bat from the screen
+                    Log.d("Enemy moving", "It works");
+                    ghostView.stopMovingAndRemove();
+                    ghostX = 0;
+                    ghostY=0;
+                }
+                break;
         default:
             break;
         }

@@ -166,16 +166,9 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
             newX = playerX + moveSpeed;
             newY = playerY;
             break;
-
-
-           //Ashan's change - key to remove bat 
-
-
-            // Player attacks
+           //Ashan's change - key to remove bat
             case KeyEvent.KEYCODE_1:
-                // Call the player's attack method
-
-                // Check for collision with the bat
+               // Check for collision with the bat
                 if (Math.abs(playerX - batX) < 400 && Math.abs(playerY - batY) < 400) {
                     // Remove the bat from the screen
                     Log.d("Enemy moving", "It works");
