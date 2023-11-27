@@ -61,7 +61,6 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
         playerHealthText.setText("Health: " + Integer.toString(player.getHealth()));
 
         // Display player sprite
-        ImageView playerImage = (ImageView) findViewById(R.id.playerImage);
         String spriteName = player.getSprite().getImageName();
 
 
