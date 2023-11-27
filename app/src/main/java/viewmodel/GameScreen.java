@@ -72,7 +72,6 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
         player.startHealthUpdates();
 
         // Display player sprite
-        ImageView playerImage = (ImageView) findViewById(R.id.playerImage);
         String spriteName = player.getSprite().getImageName();
 
 
