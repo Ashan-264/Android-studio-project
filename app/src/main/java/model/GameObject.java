@@ -38,11 +38,4 @@ public class GameObject {
         return difficulty;
     }
 
-    public ArrayList<Player> getLeaderboard() {
-        return leaderboard;
-    }
-
-    public void setLeaderboard() {
-        leaderboard.add(player.copy());
-    }
 }
