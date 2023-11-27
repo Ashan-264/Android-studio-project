@@ -18,8 +18,6 @@ import model.Player;
 
 public class GameScreen2 extends AppCompatActivity implements ScoreObserver, HealthObserver {
 
-    private Runnable countdownRunnable;
-
     private TextView playerScoreText;
 
     private TextView playerHealthText;
