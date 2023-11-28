@@ -8,7 +8,7 @@ public class ScoreBoost extends AbilityDecorator {
     @Override
     public void useAbility() {
         super.useAbility();
-        boolean InvincibleScore = true;
+        boolean invincibleScore = true;
     }
 }
 

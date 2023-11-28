@@ -43,8 +43,8 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
     private int damagePowerupX;
     private int damagePowerupY;
 
-    int xAttackRange = 400;
-    int yAttackRange = 400;
+    private int xAttackRange = 400;
+    private int yAttackRange = 400;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

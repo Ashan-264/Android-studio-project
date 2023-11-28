@@ -8,6 +8,6 @@ public class HealthBoost extends AbilityDecorator {
     @Override
     public void useAbility() {
         super.useAbility();
-        boolean HealthBoost = true;
+        boolean healthBoost = true;
     }
 }
