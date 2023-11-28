@@ -29,6 +29,8 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
 
     private int damage;
 
+    private int enemiesKilled;
+
     private int score;
 
     private Date date;
@@ -83,6 +85,7 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
         this.score = maxScore;
         this.date = new Date();
         this.isOnLeaderboard = false;
+        this.enemiesKilled = 0;
     }
 
     public Player copy() {
@@ -179,6 +182,10 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
 
     public void setPlayerYAttackRange(int y) {
         yAttackRange = y;
+    }
+
+    public int getEnemiesKilled() {
+        return enemiesKilled;
     }
 
 
@@ -350,6 +357,12 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
     public void checkAttackPowerUp(int attackPowerupX, int attackPowerupY) {
         if (Math.abs(playerX - attackPowerupX) < 100 && Math.abs(playerY - attackPowerupY) < 60) {
             player.activateAttackPowerup();
+        }
+    }
+
+    public void performAttack(int enemyX, int enemyY) {
+        if (Math.abs(playerX - enemyX) < player.getPlayerXAttackRange() && Math.abs(playerY - enemyY) < player.getPlayerYAttackRange()) {
+            enemiesKilled += 1;
         }
     }
 

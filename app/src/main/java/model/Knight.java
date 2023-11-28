@@ -47,6 +47,12 @@ public class Knight implements Enemy {
     public void setEnemyY(int y) {
         enemyY = y;
     }
+    public int getEnemyX() {
+        return enemyX;
+    }
+    public int getEnemyY() {
+        return enemyY;
+    }
 
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
