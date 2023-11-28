@@ -56,7 +56,7 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
         Player.getPlayer().addScoreObserver(this);
         Player.getPlayer().addHealthObserver(this);
 
-         //Ashans change - created new object for decorator pattern
+        //Ashans change - created new object for decorator pattern
 
         //create Bat for map 1 factory method
         Map1Bat map1Bat = new Map1Bat();
@@ -164,23 +164,23 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
             newX = playerX + moveSpeed;
             newY = playerY;
             break;
-           //Ashan's change - key to remove bat
-            case KeyEvent.KEYCODE_1:
-               // Check for collision with the bat
-                if (Math.abs(playerX - batX) < 400 && Math.abs(playerY - batY) < 400) {
-                    // Remove the bat from the screen
-                    Log.d("Enemy moving", "It works");
-                    batView.stopMovingAndRemove();
-                    batX = 0;
-                    batY=0;
-                }
+            //Ashan's change - key to remove bat
+        case KeyEvent.KEYCODE_1:
+            // Check for collision with the bat
+            if (Math.abs(playerX - batX) < 400 && Math.abs(playerY - batY) < 400) {
+                // Remove the bat from the screen
+                Log.d("Enemy moving", "It works");
+                batView.stopMovingAndRemove();
+                batX = 0;
+                batY = 0;
+            }
 
-                if (Math.abs(playerX - mageX) < 400 && Math.abs(playerY - mageY) < 400) {
-                    // Remove the bat from the screen
-                    Log.d("Enemy moving", "It works");
-                    mageView.stopMovingAndRemove();
-                    mageX = 0;
-                    mageY=0;
+            if (Math.abs(playerX - mageX) < 400 && Math.abs(playerY - mageY) < 400) {
+                // Remove the bat from the screen
+                Log.d("Enemy moving", "It works");
+                mageView.stopMovingAndRemove();
+                mageX = 0;
+                mageY = 0;
              }
                 break;
             default:
