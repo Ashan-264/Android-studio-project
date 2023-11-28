@@ -116,6 +116,8 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
         mageView = new EnemyView(this, mageX, mageY, "Mage");
         gameLayout.addView(mageView);
         mageView.startMoving();
+
+
     }
 
     @Override
