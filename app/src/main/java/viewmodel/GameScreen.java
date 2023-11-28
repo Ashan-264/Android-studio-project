@@ -196,10 +196,10 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
                 mageView.stopMovingAndRemove();
                 mageX = 0;
                 mageY = 0;
-             }
-                break;
-            default:
-                break;
+            }
+            break;
+        default:
+            break;
         }
 
         boolean legalMove = false;
@@ -277,5 +277,5 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
 
 
 
-    }
+}
 // Handle key events to move the player
