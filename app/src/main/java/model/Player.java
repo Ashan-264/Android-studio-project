@@ -130,6 +130,10 @@ public class Player implements Comparable<Player>, Subject, Subject2{
         this.notifyHealthObservers(health);
     }
 
+    public void activateScorePowerup() {
+        subScore(-20);
+    }
+
     public void setPlayerX(int x) {
         playerX = x;
     }

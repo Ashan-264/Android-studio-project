@@ -18,15 +18,6 @@ public class PowerupView extends RelativeLayout {
         private int screenWidth;
         private int screenHeight;
 
-        private Handler handler = new Handler();
-
-        private boolean isMoving = false;
-
-        private int offset = 0;
-        private int increment = 0;
-        private int direction;
-        private int speed = 5;
-
         public PowerupView(Context context, float x, float y, String spriteName) {
             super(context);
             this.x = x;
@@ -50,12 +41,8 @@ public class PowerupView extends RelativeLayout {
                 playerImage.setImageResource(R.drawable.score_powerup);
             }
 
-            // Set the initial size of the ImageView directly (in pixels)
-            // int imageWidth = screenWidth / 15; // Set your desired width in pixels
-            // int imageHeight = screenHeight / 15; // Set your desired height in pixels
             RelativeLayout.LayoutParams layoutParams =
                     new RelativeLayout.LayoutParams(imageWidth, imageHeight);
-
 
             layoutParams.leftMargin = (int) x;
             layoutParams.topMargin = (int) y;
