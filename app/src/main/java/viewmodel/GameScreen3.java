@@ -168,7 +168,7 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
                     && Math.abs(playerY - knightY) < yAttackRange) {
                 // Remove the bat from the screen
                 Log.d("Enemy moving", "It works");
-                knightView.stopMovingAndRemove();
+                knightView.stopMovingAndRemove(this);
                 knightX = 0;
                 knightY = 0;
             }
@@ -178,7 +178,7 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
                     && Math.abs(playerY - mageY) < yAttackRange) {
                 //remove mage from screen
                 Log.d("Enemy moving", "It works");
-                mageView.stopMovingAndRemove();
+                mageView.stopMovingAndRemove(this);
                 mageX = 0;
                 mageY = 0;
             }
