@@ -16,7 +16,6 @@ public class Knight implements Enemy {
     private int enemyY;
     private Point screenSize;
     private static int maxScore = 999;
-    private Handler handler;
     private Knight() {
         this.sprite = null;
     }
