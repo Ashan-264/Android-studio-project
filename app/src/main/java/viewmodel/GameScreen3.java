@@ -156,15 +156,6 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
             newX = playerX + moveSpeed;
             newY = playerY;
             break;
-        case KeyEvent.KEYCODE_1:
-            if (Math.abs(playerX - knightX) < 400 && Math.abs(playerY - knightY) < 400) {
-                // Remove the bat from the screen
-                Log.d("Enemy moving", "It works");
-                knightView.stopMovingAndRemove();
-                knightX = 0;
-                knightY = 0;
-            }
-            break;
         default:
             break;
         }
