@@ -308,6 +308,12 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
         }
     }
 
+    public void checkHeartPowerUp(int heartPowerupX, int heartPowerupY) {
+        if (Math.abs(playerX - heartPowerupX) < 100 && Math.abs(playerY - heartPowerupY) < 60) {
+            player.activateHeartPowerup();
+        }
+    }
+
     @Override
     public void addHealthObserver(HealthObserver observer) {
         healthObservers.add(observer);
