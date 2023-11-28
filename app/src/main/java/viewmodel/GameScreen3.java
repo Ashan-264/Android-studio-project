@@ -56,6 +56,9 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
         Player.getPlayer().addScoreObserver(this);
         Player.getPlayer().addHealthObserver(this);
 
+        int xAttackRange = player.getPlayerXAttackRange();
+        int yAttackRange = player.getPlayerYAttackRange();
+
         // Display difficulty
         TextView difficultyText = (TextView) findViewById(R.id.difficulty);
         difficultyText.setText(gameObject.getDifficulty());
@@ -147,44 +150,44 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
         int newX = player.getPlayerX();
         int newY = player.getPlayerY();
         switch (keyCode) {
-        case KeyEvent.KEYCODE_DPAD_DOWN:
-            newX = playerX;
-            newY = playerY + moveSpeed;
-            break;
-        case KeyEvent.KEYCODE_DPAD_UP:
-            newX = playerX;
-            newY = playerY - moveSpeed;
-            break;
-        case KeyEvent.KEYCODE_DPAD_LEFT:
-            newX = playerX - moveSpeed;
-            newY = playerY;
-            break;
-        case KeyEvent.KEYCODE_DPAD_RIGHT:
-            newX = playerX + moveSpeed;
-            newY = playerY;
-            break;
-        case KeyEvent.KEYCODE_1:
-            if (Math.abs(playerX - knightX) < xAttackRange
-                    && Math.abs(playerY - knightY) < yAttackRange) {
-                // Remove the bat from the screen
-                Log.d("Enemy moving", "It works");
-                knightView.stopMovingAndRemove(this);
-                knightX = 0;
-                knightY = 0;
-            }
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                newX = playerX;
+                newY = playerY + moveSpeed;
+                break;
+            case KeyEvent.KEYCODE_DPAD_UP:
+                newX = playerX;
+                newY = playerY - moveSpeed;
+                break;
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                newX = playerX - moveSpeed;
+                newY = playerY;
+                break;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                newX = playerX + moveSpeed;
+                newY = playerY;
+                break;
+            case KeyEvent.KEYCODE_1:
+                if (Math.abs(playerX - knightX) < xAttackRange
+                        && Math.abs(playerY - knightY) < yAttackRange) {
+                    // Remove the bat from the screen
+                    Log.d("Enemy moving", "It works");
+                    knightView.stopMovingAndRemove(this);
+                    knightX = 0;
+                    knightY = 0;
+                }
 
-            //Huy's addition
-            if (Math.abs(playerX - mageX) < xAttackRange
-                    && Math.abs(playerY - mageY) < yAttackRange) {
-                //remove mage from screen
-                Log.d("Enemy moving", "It works");
-                mageView.stopMovingAndRemove(this);
-                mageX = 0;
-                mageY = 0;
-            }
-            break;
-        default:
-            break;
+                //Huy's addition
+                if (Math.abs(playerX - mageX) < xAttackRange
+                        && Math.abs(playerY - mageY) < yAttackRange) {
+                    //remove mage from screen
+                    Log.d("Enemy moving", "It works");
+                    mageView.stopMovingAndRemove(this);
+                    mageX = 0;
+                    mageY = 0;
+                }
+                break;
+            default:
+                break;
         }
 
         boolean legalMove = false;
@@ -219,8 +222,9 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
 
         // damage powerup collision check
         if (Math.abs(playerX - damagePowerupX) < 100 && Math.abs(playerY - damagePowerupY) < 60) {
-            xAttackRange = 600;
-            yAttackRange = 600;
+            player.activateAttackPowerup();
+            xAttackRange = player.getPlayerXAttackRange();
+            yAttackRange = player.getPlayerYAttackRange();
             damagePowerupView.remove();
             damagePowerupX = 0;
             damagePowerupY = 0;

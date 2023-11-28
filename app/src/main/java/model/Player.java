@@ -35,6 +35,11 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
 
     private int playerX; //- Ashan
     private int playerY; //- Ashan
+
+    private int xAttackRange = 400;
+
+    private int yAttackRange = 400;
+
     private Point screenSize;
     private static int maxScore = 999;
     private PlayerMovement playerMovement;
@@ -139,6 +144,11 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
         this.notifyHealthObservers(health);
     }
 
+    public void activateAttackPowerup() {
+        player.setPlayerXAttackRange(600);
+        player.setPlayerYAttackRange(600);
+    }
+
     public void setPlayerX(int x) {
         playerX = x;
     }
@@ -154,6 +164,23 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
     public int getPlayerY() {
         return playerY;
     }
+
+    public int getPlayerXAttackRange() {
+        return xAttackRange;
+    }
+
+    public int getPlayerYAttackRange() {
+        return yAttackRange;
+    }
+
+    public void setPlayerXAttackRange(int x) {
+        xAttackRange = x;
+    }
+
+    public void setPlayerYAttackRange(int y) {
+        yAttackRange = y;
+    }
+
 
     public void playerMovement(int initialX, int initialY, Point screenSize) {
         playerX = initialX;
@@ -187,28 +214,28 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
     public void onKeyDown(int keyCode, int moveSpeed, KeyEvent event) {
         // Handle key down events to move the player
         switch (keyCode) {
-        case KeyEvent.KEYCODE_DPAD_DOWN:
-            PlayerMovement downMovement = new MoveDownStrategy();
-            setMovementStrategy(downMovement);
-            downMovement.move(player, moveSpeed);
-            break;
-        case KeyEvent.KEYCODE_DPAD_UP:
-            PlayerMovement upMovement = new MoveUpStrategy();
-            setMovementStrategy(upMovement);
-            upMovement.move(player, moveSpeed);
-            break;
-        case KeyEvent.KEYCODE_DPAD_LEFT:
-            PlayerMovement leftMovement = new MoveLeftStrategy();
-            setMovementStrategy(leftMovement);
-            leftMovement.move(player, moveSpeed);
-            break;
-        case KeyEvent.KEYCODE_DPAD_RIGHT:
-            PlayerMovement rightMovement = new MoveRightStrategy();
-            setMovementStrategy(rightMovement);
-            rightMovement.move(player, moveSpeed);
-            break;
-        default:
-            break;
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                PlayerMovement downMovement = new MoveDownStrategy();
+                setMovementStrategy(downMovement);
+                downMovement.move(player, moveSpeed);
+                break;
+            case KeyEvent.KEYCODE_DPAD_UP:
+                PlayerMovement upMovement = new MoveUpStrategy();
+                setMovementStrategy(upMovement);
+                upMovement.move(player, moveSpeed);
+                break;
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                PlayerMovement leftMovement = new MoveLeftStrategy();
+                setMovementStrategy(leftMovement);
+                leftMovement.move(player, moveSpeed);
+                break;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                PlayerMovement rightMovement = new MoveRightStrategy();
+                setMovementStrategy(rightMovement);
+                rightMovement.move(player, moveSpeed);
+                break;
+            default:
+                break;
         }
         Log.d("position", "x:" + playerX + "y:" + playerY);
     }
@@ -314,9 +341,15 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
         }
     }
 
-    public void checkScorePowerUp(int heartPowerupX, int heartPowerupY) {
-        if (Math.abs(playerX - heartPowerupX) < 100 && Math.abs(playerY - heartPowerupY) < 60) {
+    public void checkScorePowerUp(int scorePowerupX, int scorePowerupY) {
+        if (Math.abs(playerX - scorePowerupX) < 100 && Math.abs(playerY - scorePowerupY) < 60) {
             player.activateScorePowerup();
+        }
+    }
+
+    public void checkAttackPowerUp(int attackPowerupX, int attackPowerupY) {
+        if (Math.abs(playerX - attackPowerupX) < 100 && Math.abs(playerY - attackPowerupY) < 60) {
+            player.activateAttackPowerup();
         }
     }
 
@@ -333,5 +366,3 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
 
 
 }
-
-
