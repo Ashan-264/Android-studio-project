@@ -30,8 +30,8 @@ public class PowerupView extends RelativeLayout {
             display.getSize(size);
             screenWidth = size.x;
             screenHeight = size.y;
-            int imageWidth = screenWidth / 15;
-            int imageHeight = screenHeight / 15;
+            int imageWidth = screenWidth / 10;
+            int imageHeight = screenHeight / 10;
             playerImage = new ImageView(context);
             if (spriteName.equals("DamagePowerup")) {
                 playerImage.setImageResource(R.drawable.damage_powerup);
