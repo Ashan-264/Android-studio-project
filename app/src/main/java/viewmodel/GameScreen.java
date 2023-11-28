@@ -185,7 +185,7 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
             if (Math.abs(playerX - batX) < 400 && Math.abs(playerY - batY) < 400) {
                 // Remove the bat from the screen
                 Log.d("Enemy moving", "It works");
-                batView.stopMovingAndRemove();
+                batView.stopMovingAndRemove(this);
                 batX = 0;
                 batY = 0;
             }
@@ -193,7 +193,7 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
             if (Math.abs(playerX - mageX) < 400 && Math.abs(playerY - mageY) < 400) {
                 // Remove the bat from the screen
                 Log.d("Enemy moving", "It works");
-                mageView.stopMovingAndRemove();
+                mageView.stopMovingAndRemove(this);
                 mageX = 0;
                 mageY = 0;
             }

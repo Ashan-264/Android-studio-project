@@ -9,6 +9,10 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import tyrantgit.explosionfield.ExplosionField;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,10 +34,13 @@ public class EnemyView extends RelativeLayout {
     private int direction;
     private int speed = 5;
 
+    private String spriteName;
+
     public EnemyView(Context context, float x, float y, String spriteName) {
         super(context);
         this.x = x;
         this.y = y;
+        this.spriteName = spriteName;
 
         // Get screen dimensions
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -141,15 +148,18 @@ public class EnemyView extends RelativeLayout {
         updatePosition(x, y);
     }
 
-    public void stopMovingAndRemove() {
+    public void stopMovingAndRemove(AppCompatActivity screen) {
         if (isMoving) {
             handler.removeCallbacks(enemyRunnable);
             isMoving = false;
             // Get the parent view and remove this EnemyView
-            ViewGroup parentView = (ViewGroup) getParent();
-            if (parentView != null) {
-                parentView.removeView(this);
-            }
+//            ViewGroup parentView = (ViewGroup) getParent();
+//            if (parentView != null) {
+//                parentView.removeView(this);
+//            }
+
+            final ExplosionField explosionField = ExplosionField.attach2Window(screen);
+            explosionField.explode(playerImage);
         }
     }
 }
