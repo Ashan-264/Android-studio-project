@@ -25,7 +25,6 @@ public class Sprint5PowerUpCollisionTestMap2 {
         int heartPowerupX = 410;
         int heartPowerupY = 1140;
         player.moveRight(40);
-        player.moveUp(40);
         player.checkHeartPowerUp(heartPowerupX, heartPowerupY);
         assertEquals(40, player.getHealth());
     }
