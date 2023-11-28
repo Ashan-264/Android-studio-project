@@ -14,7 +14,7 @@ import viewmodel.GameScreen;
 import viewmodel.ScoreObserver;
 import viewmodel.HealthObserver;
 
-public class Player implements Comparable<Player>, Subject, Subject2{
+public class Player implements Comparable<Player>, Subject, Subject2 {
 
     private static Player player;
 
