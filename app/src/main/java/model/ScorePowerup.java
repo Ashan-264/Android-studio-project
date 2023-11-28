@@ -8,7 +8,7 @@ public class ScorePowerup extends AbilityDecorator {
     @Override
     public void useAbility() {
         super.useAbility();
-        boolean WallWalk = true;
+        boolean wallWalk = true;
     }
 }
 

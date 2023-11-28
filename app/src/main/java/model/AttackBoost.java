@@ -9,7 +9,7 @@ public class AttackBoost extends AbilityDecorator {
     @Override
     public void useAbility() {
         super.useAbility();
-        boolean AttackBoost = true;
+        boolean attackBoost = true;
     }
 }
 

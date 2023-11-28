@@ -18,11 +18,11 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
 
     private static Player player;
 
-    boolean wallWalk = false;
+    private boolean wallWalk = false;
 
-    boolean invincibleScore = false;
+    private boolean invincibleScore = false;
 
-    boolean healthBoost =  false;
+    private boolean healthBoost =  false;
     private String name;
     private Sprite sprite;
     private int health;
