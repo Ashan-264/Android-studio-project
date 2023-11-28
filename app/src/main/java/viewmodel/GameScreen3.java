@@ -56,6 +56,9 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
         Player.getPlayer().addScoreObserver(this);
         Player.getPlayer().addHealthObserver(this);
 
+        int xAttackRange = player.getPlayerXAttackRange();
+        int yAttackRange = player.getPlayerYAttackRange();
+
         // Display difficulty
         TextView difficultyText = (TextView) findViewById(R.id.difficulty);
         difficultyText.setText(gameObject.getDifficulty());
@@ -219,8 +222,9 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
 
         // damage powerup collision check
         if (Math.abs(playerX - damagePowerupX) < 100 && Math.abs(playerY - damagePowerupY) < 60) {
-            xAttackRange = 600;
-            yAttackRange = 600;
+            player.activateAttackPowerup();
+            xAttackRange = player.getPlayerXAttackRange();
+            yAttackRange = player.getPlayerYAttackRange();
             damagePowerupView.remove();
             damagePowerupX = 0;
             damagePowerupY = 0;

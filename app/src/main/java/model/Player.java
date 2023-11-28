@@ -35,6 +35,11 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
 
     private int playerX; //- Ashan
     private int playerY; //- Ashan
+
+    private int xAttackRange = 400;
+
+    private int yAttackRange = 400;
+
     private Point screenSize;
     private static int maxScore = 999;
     private PlayerMovement playerMovement;
@@ -139,6 +144,11 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
         this.notifyHealthObservers(health);
     }
 
+    public void activateAttackPowerup() {
+        player.setPlayerXAttackRange(600);
+        player.setPlayerYAttackRange(600);
+    }
+
     public void setPlayerX(int x) {
         playerX = x;
     }
@@ -154,6 +164,23 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
     public int getPlayerY() {
         return playerY;
     }
+
+    public int getPlayerXAttackRange() {
+        return xAttackRange;
+    }
+
+    public int getPlayerYAttackRange() {
+        return yAttackRange;
+    }
+
+    public void setPlayerXAttackRange(int x) {
+        xAttackRange = x;
+    }
+
+    public void setPlayerYAttackRange(int y) {
+        yAttackRange = y;
+    }
+
 
     public void playerMovement(int initialX, int initialY, Point screenSize) {
         playerX = initialX;
