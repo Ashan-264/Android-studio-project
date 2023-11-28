@@ -1,6 +1,6 @@
 package model;
 
-public abstract class AbilityDecorator implements PlayerAbility{
+public abstract class AbilityDecorator implements PlayerAbility {
     protected PlayerAbility decoratedPlayer;
 
     public AbilityDecorator(PlayerAbility decoratedPlayer) {

@@ -173,9 +173,9 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
             }
 
             //Huy's addition
-            if (Math.abs(playerX- mageX) < xAttackRange && Math.abs(playerY - mageY) < yAttackRange) {
+            if (Math.abs(playerX - mageX) < xAttackRange && Math.abs(playerY - mageY) < yAttackRange) {
                 //remove mage from screen
-                Log.d("Enemy moving","It works");
+                Log.d("Enemy moving", "It works");
                 mageView.stopMovingAndRemove();
                 mageX = 0;
                 mageY = 0;

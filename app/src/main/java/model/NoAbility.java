@@ -1,6 +1,6 @@
 package model;
 
-public class NoAbility implements PlayerAbility{
+public class NoAbility implements PlayerAbility {
 
 
     @Override

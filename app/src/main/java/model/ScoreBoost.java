@@ -1,6 +1,6 @@
 package model;
 
-public class ScoreBoost extends AbilityDecorator{
+public class ScoreBoost extends AbilityDecorator {
     public ScoreBoost(PlayerAbility decoratedPlayer) {
         super(decoratedPlayer);
     }
