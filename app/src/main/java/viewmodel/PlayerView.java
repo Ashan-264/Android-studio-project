@@ -31,9 +31,9 @@ public class PlayerView extends RelativeLayout {
 
         playerImage = new ImageView(context);
         if (spriteName.equals("Buzz")) {
-            playerImage.setImageResource(R.drawable.buzz2);
+            playerImage.setImageResource(R.drawable.buzz2_new);
         } else if (spriteName.equals("Wizard")) {
-            playerImage.setImageResource(R.drawable.purple_wizard);
+            playerImage.setImageResource(R.drawable.purple_wizard_final);
         } else if (spriteName.equals("Archer")) {
             playerImage.setImageResource(R.drawable.green_archer);
         }
