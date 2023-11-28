@@ -49,7 +49,7 @@ public class Ghost implements Enemy {
     public void setEnemyY(int y) {
         enemyY = y;
     }
-    
+
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
     }
