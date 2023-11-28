@@ -15,7 +15,10 @@ import android.widget.TextView;
 
 import model.Enemy;
 import model.GameObject;
+import model.HealthBoost;
 import model.Player;
+import model.PlayerAbility;
+import model.ScorePowerup;
 
 public class GameScreen extends AppCompatActivity implements ScoreObserver, HealthObserver {
 
@@ -52,6 +55,8 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
         Player player = Player.getPlayer();
         Player.getPlayer().addScoreObserver(this);
         Player.getPlayer().addHealthObserver(this);
+
+         //Ashans change - created new object for decorator pattern
 
         //create Bat for map 1 factory method
         Map1Bat map1Bat = new Map1Bat();

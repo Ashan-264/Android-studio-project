@@ -14,9 +14,15 @@ import viewmodel.GameScreen;
 import viewmodel.ScoreObserver;
 import viewmodel.HealthObserver;
 
-public class Player implements Comparable<Player>, Subject, Subject2 {
+public class Player implements Comparable<Player>, Subject, Subject2{
 
     private static Player player;
+
+    boolean wallWalk = false;
+
+    boolean invincibleScore = false;
+
+    boolean healthBoost =  false;
     private String name;
     private Sprite sprite;
     private int health;
@@ -303,6 +309,8 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
     public void removeHealthObserver(HealthObserver observer) {
         healthObservers.remove(observer);
     }
+
+
 }
 
 
