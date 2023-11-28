@@ -44,7 +44,7 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
     private static int maxScore = 999;
     private PlayerMovement playerMovement;
 
-    private Handler handler = new Handler();
+    private Handler handler;// = new Handler();
     private boolean isScoring = false;
     private boolean healthUpdating = false;
 
@@ -338,6 +338,18 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
     public void checkHeartPowerUp(int heartPowerupX, int heartPowerupY) {
         if (Math.abs(playerX - heartPowerupX) < 100 && Math.abs(playerY - heartPowerupY) < 60) {
             player.activateHeartPowerup();
+        }
+    }
+
+    public void checkScorePowerUp(int scorePowerupX, int scorePowerupY) {
+        if (Math.abs(playerX - scorePowerupX) < 100 && Math.abs(playerY - scorePowerupY) < 60) {
+            player.activateScorePowerup();
+        }
+    }
+
+    public void checkAttackPowerUp(int attackPowerupX, int attackPowerupY) {
+        if (Math.abs(playerX - attackPowerupX) < 100 && Math.abs(playerY - attackPowerupY) < 60) {
+            player.activateScorePowerup();
         }
     }
 
