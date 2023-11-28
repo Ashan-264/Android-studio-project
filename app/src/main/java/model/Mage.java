@@ -73,12 +73,6 @@ public class Mage implements Enemy {
         enemyY = initialY;
         this.screenSize = screenSize;
     }
-    public void moveUp(int moveSpeed) {
-        enemyY -= moveSpeed;
-    }
-    public void moveDown(int moveSpeed) {
-        enemyY += moveSpeed;
-    }
 
 }
 
