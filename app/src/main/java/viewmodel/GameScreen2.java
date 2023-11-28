@@ -41,6 +41,11 @@ public class GameScreen2 extends AppCompatActivity implements ScoreObserver, Hea
     private int batX;
     private int batY;
 
+    private PowerupView heartPowerupView;
+
+    private int heartPowerupX;
+    private int heartPowerupY;
+
 
 
     @Override
@@ -104,8 +109,15 @@ public class GameScreen2 extends AppCompatActivity implements ScoreObserver, Hea
         batView.startMoving();
         gameLayout.addView(batView);
 
-    }
+        // create heart powerup
+        heartPowerupX = 410;
+        heartPowerupY = 1140;
 
+        // create heart view
+        heartPowerupView = new PowerupView(this, heartPowerupX, heartPowerupY, "HeartPowerup");
+        gameLayout.addView(heartPowerupView);
+
+    }
 
 
     @Override
@@ -204,6 +216,14 @@ public class GameScreen2 extends AppCompatActivity implements ScoreObserver, Hea
         // bat collision check
         if (Math.abs(playerX - batX) < 100 && Math.abs(playerY - batY) < 60) {
             player.takeDamage();
+        }
+
+        // heart powerup collision check
+        if (Math.abs(playerX - heartPowerupX) < 100 && Math.abs(playerY - heartPowerupY) < 60) {
+            player.activateHeartPowerup();
+            heartPowerupView.remove();
+            heartPowerupX = 0;
+            heartPowerupY = 0;
         }
 
         if (playerX + moveSpeed >= screenSize.x - screenSize.x / 8) {

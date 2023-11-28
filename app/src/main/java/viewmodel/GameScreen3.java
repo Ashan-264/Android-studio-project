@@ -38,6 +38,14 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
     private int knightX;
     private int knightY;
 
+    private PowerupView damagePowerupView;
+
+    private int damagePowerupX;
+    private int damagePowerupY;
+
+    int xAttackRange = 400;
+    int yAttackRange = 400;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +103,13 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
         gameLayout.addView(knightView);
 
 
+        // create score powerup
+        damagePowerupX = 840;
+        damagePowerupY = 540;
+
+        // create powerup view
+        damagePowerupView = new PowerupView(this, damagePowerupX, damagePowerupY, "DamagePowerup");
+        gameLayout.addView(damagePowerupView);
 
 
         // Display score
@@ -149,7 +164,7 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
             newY = playerY;
             break;
         case KeyEvent.KEYCODE_1:
-            if (Math.abs(playerX - knightX) < 400 && Math.abs(playerY - knightY) < 400) {
+            if (Math.abs(playerX - knightX) < xAttackRange && Math.abs(playerY - knightY) < yAttackRange) {
                 // Remove the bat from the screen
                 Log.d("Enemy moving", "It works");
                 knightView.stopMovingAndRemove();
@@ -158,7 +173,7 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
             }
 
             //Huy's addition
-            if (Math.abs(playerX- mageX) < 400 && Math.abs(playerY - mageY) < 400) {
+            if (Math.abs(playerX- mageX) < xAttackRange && Math.abs(playerY - mageY) < yAttackRange) {
                 //remove mage from screen
                 Log.d("Enemy moving","It works");
                 mageView.stopMovingAndRemove();
@@ -198,6 +213,15 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
         // knight collision check
         if (Math.abs(playerX - knightX) < 100 && Math.abs(playerY - knightY) < 60) {
             player.takeDamage();
+        }
+
+        // damage powerup collision check
+        if (Math.abs(playerX - damagePowerupX) < 100 && Math.abs(playerY - damagePowerupY) < 60) {
+            xAttackRange = 600;
+            yAttackRange = 600;
+            damagePowerupView.remove();
+            damagePowerupX = 0;
+            damagePowerupY = 0;
         }
 
         if (playerX - moveSpeed <= 0) {

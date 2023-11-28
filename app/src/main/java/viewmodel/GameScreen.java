@@ -45,6 +45,12 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
     private int mageX;
     private int mageY;
 
+    // Powerup variables
+    private PowerupView scorePowerupView;
+
+    private int scorePowerupX;
+    private int scorePowerupY;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +122,15 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
         mageView = new EnemyView(this, mageX, mageY, "Mage");
         gameLayout.addView(mageView);
         mageView.startMoving();
+
+        // create score powerup
+        scorePowerupX = 120;
+        scorePowerupY = 980;
+
+        // create powerup view
+        scorePowerupView = new PowerupView(this, scorePowerupX, scorePowerupY, "ScorePowerup");
+        gameLayout.addView(scorePowerupView);
+
     }
 
     @Override
@@ -215,6 +230,14 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
         // mage collision check
         if (Math.abs(playerX - mageX) < 100 && Math.abs(playerY - mageY) < 60) {
             player.takeDamage();
+        }
+
+        // score powerup collision check
+        if (Math.abs(playerX - scorePowerupX) < 100 && Math.abs(playerY - scorePowerupY) < 60) {
+            player.activateScorePowerup();
+            scorePowerupView.remove();
+            scorePowerupX = 0;
+            scorePowerupY = 0;
         }
 
         if (playerX + moveSpeed >= screenSize.x - screenSize.x / 6) {
