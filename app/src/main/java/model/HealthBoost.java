@@ -1,6 +1,6 @@
 package model;
 
-public class HealthBoost extends AbilityDecorator{
+public class HealthBoost extends AbilityDecorator {
     public HealthBoost(PlayerAbility decoratedPlayer) {
         super(decoratedPlayer);
     }
