@@ -22,9 +22,6 @@ import model.ScorePowerup;
 
 public class GameScreen extends AppCompatActivity implements ScoreObserver, HealthObserver {
 
-    private Handler handler = new Handler();
-    private Runnable countdownRunnable;
-
     private TextView playerScoreText;
     private TextView playerHealthText;
 
@@ -80,7 +77,6 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
         player.startHealthUpdates();
 
         // Display player sprite
-        ImageView playerImage = (ImageView) findViewById(R.id.playerImage);
         String spriteName = player.getSprite().getImageName();
 
 
@@ -137,9 +133,6 @@ public class GameScreen extends AppCompatActivity implements ScoreObserver, Heal
         playerHealthText = (TextView) findViewById(R.id.playerHealth);
         playerHealthText.setText("Health: " + Integer.toString(newHealth));
 
-        // TO DO
-        // Change this to Archer's class once he adds it
-        // This is when health hits 0, should go to EndScreenLose
         if (newHealth <= 0) {
             Intent game = new Intent(GameScreen.this, EndScreen.class);
             startActivity(game);

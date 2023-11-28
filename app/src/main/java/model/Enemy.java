@@ -13,10 +13,4 @@ public interface Enemy {
 
     public void setEnemyY(int y);
 
-    public int getEnemyX();
-
-    public int getEnemyY();
-
-    public void enemyMovement(int initialX, int initialY, Point screenSize);
-
 }

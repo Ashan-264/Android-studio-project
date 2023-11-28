@@ -18,9 +18,6 @@ import model.Player;
 
 public class GameScreen3 extends AppCompatActivity implements ScoreObserver, HealthObserver {
 
-    private Handler handler = new Handler();
-    private Runnable countdownRunnable;
-
     private TextView playerScoreText;
     private TextView playerHealthText;
     private PlayerView playerView;
@@ -64,7 +61,6 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
         playerHealthText.setText("Health: " + Integer.toString(player.getHealth()));
 
         // Display player sprite
-        ImageView playerImage = (ImageView) findViewById(R.id.playerImage);
         String spriteName = player.getSprite().getImageName();
 
 
@@ -124,9 +120,6 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
         playerHealthText = (TextView) findViewById(R.id.playerHealth);
         playerHealthText.setText("Health: " + Integer.toString(newHealth));
 
-        // TO DO
-        // Change this to Archer's class once he adds it
-        // This is when health hits 0, should go to EndScreenLose
         if (newHealth <= 0) {
             Intent game = new Intent(GameScreen3.this, EndScreen.class);
             startActivity(game);
@@ -134,7 +127,6 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
     }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        // TODO logic to move the player (remember to check collisions)
         Player player = Player.getPlayer();
 
         int newX = player.getPlayerX();
@@ -155,6 +147,24 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
         case KeyEvent.KEYCODE_DPAD_RIGHT:
             newX = playerX + moveSpeed;
             newY = playerY;
+            break;
+        case KeyEvent.KEYCODE_1:
+            if (Math.abs(playerX - knightX) < 400 && Math.abs(playerY - knightY) < 400) {
+                // Remove the bat from the screen
+                Log.d("Enemy moving", "It works");
+                knightView.stopMovingAndRemove();
+                knightX = 0;
+                knightY = 0;
+            }
+
+            //Huy's addition
+            if (Math.abs(playerX- mageX) < 400 && Math.abs(playerY - mageY) < 400) {
+                //remove mage from screen
+                Log.d("Enemy moving","It works");
+                mageView.stopMovingAndRemove();
+                mageX = 0;
+                mageY = 0;
+            }
             break;
         default:
             break;

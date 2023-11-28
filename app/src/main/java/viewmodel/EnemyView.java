@@ -30,8 +30,6 @@ public class EnemyView extends RelativeLayout {
     private int direction;
     private int speed = 5;
 
-    private List<EnemyObserver> enemyObservers = new ArrayList<>();
-
     public EnemyView(Context context, float x, float y, String spriteName) {
         super(context);
         this.x = x;

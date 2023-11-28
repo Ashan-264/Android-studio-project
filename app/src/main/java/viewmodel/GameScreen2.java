@@ -18,10 +18,6 @@ import model.Player;
 
 public class GameScreen2 extends AppCompatActivity implements ScoreObserver, HealthObserver {
 
-    private Handler handler = new Handler();
-
-    private Runnable countdownRunnable;
-
     private TextView playerScoreText;
 
     private TextView playerHealthText;
@@ -70,7 +66,6 @@ public class GameScreen2 extends AppCompatActivity implements ScoreObserver, Hea
         playerHealthText.setText("Health: " + Integer.toString(player.getHealth()));
 
         // Display player sprite
-        ImageView playerImage = (ImageView) findViewById(R.id.playerImage);
         String spriteName = player.getSprite().getImageName();
 
 
@@ -128,9 +123,6 @@ public class GameScreen2 extends AppCompatActivity implements ScoreObserver, Hea
         playerHealthText = (TextView) findViewById(R.id.playerHealth);
         playerHealthText.setText("Health: " + Integer.toString(newHealth));
 
-        // TO DO
-        // Change this to Archer's class once he adds it
-        // This is when health hits 0, should go to EndScreenLose
         if (newHealth <= 0) {
             Intent game = new Intent(GameScreen2.this, EndScreen.class);
             startActivity(game);
@@ -139,7 +131,6 @@ public class GameScreen2 extends AppCompatActivity implements ScoreObserver, Hea
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        // TODO logic to move the player (remember to check collisions)
         Player player = Player.getPlayer();
 
         int newX = player.getPlayerX();
