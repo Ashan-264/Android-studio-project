@@ -164,24 +164,24 @@ public class GameScreen2 extends AppCompatActivity implements ScoreObserver, Hea
             newX = playerX + moveSpeed;
             newY = playerY;
             break;
-        //Ashan's change - key to remove bat
-        case KeyEvent.KEYCODE_1:
-            // Check for collision with the enemy
-            if (Math.abs(playerX - batX) < 400 && Math.abs(playerY - batY) < 400) {
-                // Remove the bat from the screen
-                Log.d("Enemy moving", "It works");
-                batView.stopMovingAndRemove();
-                batX = 0;
-                batY = 0;
-            }
-            if (Math.abs(playerX - ghostX) < 400 && Math.abs(playerY - ghostY) < 400) {
-                // Remove the ghost from the screen
-                Log.d("Enemy moving", "It works");
-                ghostView.stopMovingAndRemove();
-                ghostX = 0;
-                ghostY = 0;
-            }
-            break;
+            //Ashan's change - key to remove bat
+            case KeyEvent.KEYCODE_1:
+                // Check for collision with the enemy
+                if (Math.abs(playerX - batX) < 400 && Math.abs(playerY - batY) < 400) {
+                    // Remove the bat from the screen
+                    Log.d("Enemy moving", "It works");
+                    batView.stopMovingAndRemove();
+                    batX = 0;
+                    batY=0;
+                }
+                if (Math.abs(playerX - ghostX) < 400 && Math.abs(playerY - ghostY) < 400) {
+                    // Remove the ghost from the screen
+                    Log.d("Enemy moving", "It works");
+                    ghostView.stopMovingAndRemove();
+                    ghostX = 0;
+                    ghostY=0;
+                }
+                break;
         default:
             break;
         }

@@ -164,8 +164,7 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
             newY = playerY;
             break;
         case KeyEvent.KEYCODE_1:
-            if (Math.abs(playerX - knightX) < xAttackRange
-                    && Math.abs(playerY - knightY) < yAttackRange) {
+            if (Math.abs(playerX - knightX) < xAttackRange && Math.abs(playerY - knightY) < yAttackRange) {
                 // Remove the bat from the screen
                 Log.d("Enemy moving", "It works");
                 knightView.stopMovingAndRemove();
@@ -174,8 +173,7 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
             }
 
             //Huy's addition
-            if (Math.abs(playerX - mageX) < xAttackRange
-                    && Math.abs(playerY - mageY) < yAttackRange) {
+            if (Math.abs(playerX - mageX) < xAttackRange && Math.abs(playerY - mageY) < yAttackRange) {
                 //remove mage from screen
                 Log.d("Enemy moving", "It works");
                 mageView.stopMovingAndRemove();
