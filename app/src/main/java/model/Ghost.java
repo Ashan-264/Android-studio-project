@@ -15,9 +15,6 @@ public class Ghost implements Enemy {
     private int enemyX;
     private int enemyY;
     private Point screenSize;
-    private static int maxScore = 999;
-    private PlayerMovement enemyMovement;
-    private Handler handler;
     private Ghost() {
         this.sprite = null;
     }
