@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.Display;
 import android.view.KeyEvent;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -150,44 +148,44 @@ public class GameScreen3 extends AppCompatActivity implements ScoreObserver, Hea
         int newX = player.getPlayerX();
         int newY = player.getPlayerY();
         switch (keyCode) {
-            case KeyEvent.KEYCODE_DPAD_DOWN:
-                newX = playerX;
-                newY = playerY + moveSpeed;
-                break;
-            case KeyEvent.KEYCODE_DPAD_UP:
-                newX = playerX;
-                newY = playerY - moveSpeed;
-                break;
-            case KeyEvent.KEYCODE_DPAD_LEFT:
-                newX = playerX - moveSpeed;
-                newY = playerY;
-                break;
-            case KeyEvent.KEYCODE_DPAD_RIGHT:
-                newX = playerX + moveSpeed;
-                newY = playerY;
-                break;
-            case KeyEvent.KEYCODE_1:
-                if (Math.abs(playerX - knightX) < xAttackRange
-                        && Math.abs(playerY - knightY) < yAttackRange) {
-                    // Remove the bat from the screen
-                    Log.d("Enemy moving", "It works");
-                    knightView.stopMovingAndRemove(this);
-                    knightX = 0;
-                    knightY = 0;
-                }
+        case KeyEvent.KEYCODE_DPAD_DOWN:
+            newX = playerX;
+            newY = playerY + moveSpeed;
+            break;
+        case KeyEvent.KEYCODE_DPAD_UP:
+            newX = playerX;
+            newY = playerY - moveSpeed;
+            break;
+        case KeyEvent.KEYCODE_DPAD_LEFT:
+            newX = playerX - moveSpeed;
+            newY = playerY;
+            break;
+        case KeyEvent.KEYCODE_DPAD_RIGHT:
+            newX = playerX + moveSpeed;
+            newY = playerY;
+            break;
+        case KeyEvent.KEYCODE_1:
+            if (Math.abs(playerX - knightX) < xAttackRange
+                    && Math.abs(playerY - knightY) < yAttackRange) {
+                // Remove the bat from the screen
+                Log.d("Enemy moving", "It works");
+                knightView.stopMovingAndRemove(this);
+                knightX = 0;
+                knightY = 0;
+            }
 
-                //Huy's addition
-                if (Math.abs(playerX - mageX) < xAttackRange
-                        && Math.abs(playerY - mageY) < yAttackRange) {
-                    //remove mage from screen
-                    Log.d("Enemy moving", "It works");
-                    mageView.stopMovingAndRemove(this);
-                    mageX = 0;
-                    mageY = 0;
-                }
-                break;
-            default:
-                break;
+            //Huy's addition
+            if (Math.abs(playerX - mageX) < xAttackRange
+                    && Math.abs(playerY - mageY) < yAttackRange) {
+                //remove mage from screen
+                Log.d("Enemy moving", "It works");
+                mageView.stopMovingAndRemove(this);
+                mageX = 0;
+                mageY = 0;
+            }
+            break;
+        default:
+            break;
         }
 
         boolean legalMove = false;

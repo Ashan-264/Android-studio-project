@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.Display;
 import android.view.KeyEvent;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 

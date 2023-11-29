@@ -5,20 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.Display;
 import android.view.KeyEvent;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import model.Enemy;
 import model.GameObject;
-import model.HealthBoost;
 import model.Player;
-import model.PlayerAbility;
-import model.ScorePowerup;
 
 public class GameScreen extends AppCompatActivity implements ScoreObserver, HealthObserver {
 

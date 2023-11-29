@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Point;
 import android.os.Handler;
 import android.view.Display;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -13,8 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import tyrantgit.explosionfield.ExplosionField;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class EnemyView extends RelativeLayout {
 
@@ -153,10 +150,10 @@ public class EnemyView extends RelativeLayout {
             handler.removeCallbacks(enemyRunnable);
             isMoving = false;
             // Get the parent view and remove this EnemyView
-//            ViewGroup parentView = (ViewGroup) getParent();
-//            if (parentView != null) {
-//                parentView.removeView(this);
-//            }
+            //            ViewGroup parentView = (ViewGroup) getParent();
+            //            if (parentView != null) {
+            //                parentView.removeView(this);
+            //            }
 
             final ExplosionField explosionField = ExplosionField.attach2Window(screen);
             explosionField.explode(playerImage);

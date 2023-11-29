@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import viewmodel.EnemyView;
-import viewmodel.GameScreen;
 import viewmodel.ScoreObserver;
 import viewmodel.HealthObserver;
 
@@ -221,28 +219,28 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
     public void onKeyDown(int keyCode, int moveSpeed, KeyEvent event) {
         // Handle key down events to move the player
         switch (keyCode) {
-            case KeyEvent.KEYCODE_DPAD_DOWN:
-                PlayerMovement downMovement = new MoveDownStrategy();
-                setMovementStrategy(downMovement);
-                downMovement.move(player, moveSpeed);
-                break;
-            case KeyEvent.KEYCODE_DPAD_UP:
-                PlayerMovement upMovement = new MoveUpStrategy();
-                setMovementStrategy(upMovement);
-                upMovement.move(player, moveSpeed);
-                break;
-            case KeyEvent.KEYCODE_DPAD_LEFT:
-                PlayerMovement leftMovement = new MoveLeftStrategy();
-                setMovementStrategy(leftMovement);
-                leftMovement.move(player, moveSpeed);
-                break;
-            case KeyEvent.KEYCODE_DPAD_RIGHT:
-                PlayerMovement rightMovement = new MoveRightStrategy();
-                setMovementStrategy(rightMovement);
-                rightMovement.move(player, moveSpeed);
-                break;
-            default:
-                break;
+        case KeyEvent.KEYCODE_DPAD_DOWN:
+            PlayerMovement downMovement = new MoveDownStrategy();
+            setMovementStrategy(downMovement);
+            downMovement.move(player, moveSpeed);
+            break;
+        case KeyEvent.KEYCODE_DPAD_UP:
+            PlayerMovement upMovement = new MoveUpStrategy();
+            setMovementStrategy(upMovement);
+            upMovement.move(player, moveSpeed);
+            break;
+        case KeyEvent.KEYCODE_DPAD_LEFT:
+            PlayerMovement leftMovement = new MoveLeftStrategy();
+            setMovementStrategy(leftMovement);
+            leftMovement.move(player, moveSpeed);
+            break;
+        case KeyEvent.KEYCODE_DPAD_RIGHT:
+            PlayerMovement rightMovement = new MoveRightStrategy();
+            setMovementStrategy(rightMovement);
+            rightMovement.move(player, moveSpeed);
+            break;
+        default:
+            break;
         }
         Log.d("position", "x:" + playerX + "y:" + playerY);
     }
@@ -361,7 +359,8 @@ public class Player implements Comparable<Player>, Subject, Subject2 {
     }
 
     public void performAttack(int enemyX, int enemyY) {
-        if (Math.abs(playerX - enemyX) < player.getPlayerXAttackRange() && Math.abs(playerY - enemyY) < player.getPlayerYAttackRange()) {
+        if (Math.abs(playerX - enemyX) < player.getPlayerXAttackRange()
+                && Math.abs(playerY - enemyY) < player.getPlayerYAttackRange()) {
             enemiesKilled += 1;
         }
     }
