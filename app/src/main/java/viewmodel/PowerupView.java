@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 public class PowerupView extends RelativeLayout {
 
     private ImageView playerImage;
-    private float x;q
+    private float x;
     private float y;
 
     private int screenWidth;
