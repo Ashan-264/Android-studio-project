@@ -4,11 +4,11 @@ public class ScoreBoost extends AbilityDecorator {
     public ScoreBoost(PlayerAbility decoratedPlayer) {
         super(decoratedPlayer);
     }
-
+    Player player = Player.getPlayer();
     @Override
     public void useAbility() {
         super.useAbility();
-        boolean invincibleScore = true;
+        player.activateScorePowerup();
     }
 }
 
