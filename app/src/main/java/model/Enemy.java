@@ -1,7 +1,5 @@
 package model;
 
-import android.graphics.Point;
-
 public interface Enemy {
     public void setEnemy();
 

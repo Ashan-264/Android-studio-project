@@ -2,7 +2,6 @@ package viewmodel;
 
 import android.content.Context;
 import android.graphics.Point;
-import android.os.Handler;
 import android.view.Display;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -12,7 +11,7 @@ import android.widget.RelativeLayout;
 public class PowerupView extends RelativeLayout {
 
     private ImageView playerImage;
-    private float x;
+    private float x;q
     private float y;
 
     private int screenWidth;

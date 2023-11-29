@@ -1,7 +1,6 @@
 package model;
 
 import android.graphics.Point;
-import android.os.Handler;
 
 public class Bat implements Enemy {
 
